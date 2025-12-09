@@ -118,13 +118,7 @@ const SHAPE_INFO: Record<string, { description: string; characteristics: string[
 
 // Generate static params for all shape hub pages
 export async function generateStaticParams() {
-  // Test with subset first
-  return [
-    { shape: 'round' },
-    { shape: 'oval' },
-  ];
-  // Full generation (uncomment after testing):
-  // return generateShapeStaticParams();
+  return generateShapeStaticParams();
 }
 
 // Generate metadata for each shape hub page

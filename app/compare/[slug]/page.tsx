@@ -13,16 +13,8 @@ type Props = {
 };
 
 // Generate static params for all 1,201 comparison pages
-// Note: For initial testing, we'll generate a subset. Uncomment full generation after testing.
 export async function generateStaticParams() {
-  // Test with just a few pages first
-  return [
-    { slug: '0.5-round-vs-1-round' },
-    { slug: '1-oval-vs-1.5-oval' },
-    { slug: '0.75-princess-vs-1-cushion' },
-  ];
-  // Full generation (uncomment after testing):
-  // return generateComparisonStaticParams();
+  return generateComparisonStaticParams();
 }
 
 // Generate metadata for SEO

@@ -13,13 +13,7 @@ type Props = {
 
 // Generate static params for all carat hub pages
 export async function generateStaticParams() {
-  // Test with subset first
-  return [
-    { carat: '1' },
-    { carat: '1.5' },
-  ];
-  // Full generation (uncomment after testing):
-  // return generateCaratStaticParams();
+  return generateCaratStaticParams();
 }
 
 // Generate metadata for each carat hub page
