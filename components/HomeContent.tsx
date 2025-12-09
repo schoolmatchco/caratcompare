@@ -19,27 +19,8 @@ export default function HomeContent() {
     )
   }
 
-  // Generate random defaults if no URL params
-  const getRandomDefaults = () => {
-    const randomCarat1 = validCarats[Math.floor(Math.random() * validCarats.length)]
-    const randomShape1 = validShapes[Math.floor(Math.random() * validShapes.length)]
-
-    let randomCarat2, randomShape2
-    // Ensure the second diamond is different from the first
-    do {
-      randomCarat2 = validCarats[Math.floor(Math.random() * validCarats.length)]
-      randomShape2 = validShapes[Math.floor(Math.random() * validShapes.length)]
-    } while (randomCarat1 === randomCarat2 && randomShape1 === randomShape2)
-
-    return { randomCarat1, randomShape1, randomCarat2, randomShape2 }
-  }
-
-  // Check if any URL params are present
-  const hasUrlParams = searchParams.has('carat1') || searchParams.has('shape1') ||
-                       searchParams.has('carat2') || searchParams.has('shape2')
-
-  // Get random defaults if no URL params, otherwise use URL params or fallback defaults
-  const defaults = !hasUrlParams ? getRandomDefaults() : {
+  // Static defaults (consistent for SSR hydration)
+  const defaults = {
     randomCarat1: 0.5,
     randomShape1: 'heart',
     randomCarat2: 1.25,
