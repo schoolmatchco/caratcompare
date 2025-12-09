@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         'header-black': '#000000',
         'main-gray': '#252525',
-        'shopping-gray': '#CCCCCC',
+        'shopping-gray': '#F5F5F5',
       },
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
