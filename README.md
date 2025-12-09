@@ -41,6 +41,7 @@ Carat Compare is a Next.js 16 application that allows users to visually compare 
 - **Interactive Change Modal**: Bottom-sheet modal with live preview and custom sliders
 - **Affiliate Integration**: Links to three major diamond retailers
 - **FAQ Section**: Educational content about diamond shopping
+- **Google Analytics 4**: Full GA4 tracking with page views and user analytics
 - **Smooth Animations**: Framer Motion for professional feel
 
 ---
@@ -215,18 +216,20 @@ Once approved for affiliate programs, update URLs in `components/ShoppingSection
 
 ## Recent Changes (December 8, 2024)
 
-### Added
+### Version 1.2.0 (Latest)
+- ✅ **Google Analytics 4 Integration**: Full tracking implementation with GA4
+- ✅ **Fixed React Hydration Error**: Critical bug preventing proper rendering
+  - Replaced random defaults with static defaults (0.5ct heart vs 1.25ct round)
+  - Fixed server/client mismatch issue
+
+### Version 1.1.0
 - ✅ Diamond FAQ section with 6 collapsible questions
 - ✅ Clickable logo linking to homepage
 - ✅ Custom favicon (cyan/magenta split diamond)
-
-### Changed
 - ✅ Updated affiliate links to non-affiliate URLs (pre-approval period)
 - ✅ Removed pricing estimates, replaced with "Check Prices →" CTA
 - ✅ Improved mobile spacing for shopping section
 - ✅ Changed subtitle to "DIAMOND SIZE & SHAPE COMPARISON TOOL"
-
-### Fixed
 - ✅ Dimension line alignment for rotated shapes (marquise, pear, oval, etc.)
 - ✅ Mobile layout crowding in shopping section
 
@@ -369,7 +372,7 @@ Current Lighthouse scores meet all targets.
 ### Priority Tasks
 1. **Verify Measurements**: User has reference graphic to check against our dimensions
 2. **Affiliate Program Status**: Check on approval status from retailers
-3. **Analytics Setup**: Add Google Analytics if desired
+3. **Custom GA Events**: Consider tracking affiliate clicks, diamond changes, FAQ interactions
 4. **Content Expansion**: Consider adding blog posts for SEO
 
 ### Quick Context

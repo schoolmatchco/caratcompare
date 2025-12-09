@@ -2,6 +2,27 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.2.0] - 2024-12-08
+
+### Added
+- **Google Analytics 4 Integration**: Full GA4 tracking implementation
+  - Created GoogleAnalytics component with Next.js Script optimization
+  - Uses NEXT_PUBLIC_GA_ID environment variable
+  - Loads with afterInteractive strategy for optimal performance
+  - Automatic page view tracking
+  - Measurement ID: G-1MM0RSPMSQ
+
+### Fixed
+- **React Hydration Mismatch Error**: Critical bug fix preventing proper rendering
+  - Replaced Math.random() based defaults with static defaults
+  - Eliminated server/client mismatch that was blocking React hydration
+  - Now uses consistent defaults: 0.5ct heart vs 1.25ct round
+  - This fix was essential for Google Analytics to load properly
+
+### Technical
+- Environment variable setup for local and production (.env.local, Vercel)
+- Proper .gitignore configuration to protect GA measurement ID
+
 ## [1.1.0] - 2024-12-08
 
 ### Added
