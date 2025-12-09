@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 /**
- * Middleware to redirect old query parameter URLs to new clean URLs
+ * Proxy to redirect old query parameter URLs to new clean URLs
  * Example: /?carat1=0.5&shape1=round&carat2=1&shape2=oval
  *          → /compare/0.5-round-vs-1-oval
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
   // Only handle homepage with query parameters
@@ -36,7 +36,7 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Only run middleware on specific paths
+// Only run proxy on specific paths
 export const config = {
   matcher: [
     /*
