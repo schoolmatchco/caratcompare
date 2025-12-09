@@ -116,9 +116,8 @@ const SHAPE_INFO: Record<string, { description: string; characteristics: string[
   },
 };
 
-// Force static generation and disable dynamic params
+// Force static generation
 export const dynamic = 'force-static';
-export const dynamicParams = false;
 
 // Generate static params for all shape hub pages
 export async function generateStaticParams() {
@@ -127,14 +126,16 @@ export async function generateStaticParams() {
 
 // Generate metadata for each shape hub page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  if (!params || !params.shape) {
+  const resolvedParams = await params;
+
+  if (!resolvedParams || !resolvedParams.shape) {
     return {
       title: 'Diamond Shape Comparison | Carat Compare',
       description: 'Compare diamond shapes and sizes.',
     };
   }
 
-  const shape = params.shape.toLowerCase();
+  const shape = resolvedParams.shape.toLowerCase();
 
   if (!VALID_SHAPES.includes(shape as any)) {
     return {
@@ -162,12 +163,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Shape hub page component
-export default function ShapeHubPage({ params }: Props) {
-  if (!params || !params.shape) {
+export default async function ShapeHubPage({ params }: Props) {
+  const resolvedParams = await params;
+
+  if (!resolvedParams || !resolvedParams.shape) {
     notFound();
   }
 
-  const shape = params.shape.toLowerCase();
+  const shape = resolvedParams.shape.toLowerCase();
 
   // Validate shape
   if (!VALID_SHAPES.includes(shape as any)) {

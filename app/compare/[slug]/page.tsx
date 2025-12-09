@@ -12,9 +12,8 @@ type Props = {
   params: { slug: string };
 };
 
-// Force static generation and disable dynamic params
+// Force static generation
 export const dynamic = 'force-static';
-export const dynamicParams = false;
 
 // Generate static params for all 1,201 comparison pages
 export async function generateStaticParams() {
@@ -23,14 +22,16 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  if (!params || !params.slug) {
+  const resolvedParams = await params;
+
+  if (!resolvedParams || !resolvedParams.slug) {
     return {
       title: 'Diamond Comparison | Carat Compare',
       description: 'Compare diamond sizes and shapes.',
     };
   }
 
-  const data = parseComparisonSlug(params.slug);
+  const data = parseComparisonSlug(resolvedParams.slug);
 
   if (!data) {
     return {
@@ -65,12 +66,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Main comparison page component
-export default function ComparisonPage({ params }: Props) {
-  if (!params || !params.slug) {
+export default async function ComparisonPage({ params }: Props) {
+  const resolvedParams = await params;
+
+  if (!resolvedParams || !resolvedParams.slug) {
     notFound();
   }
 
-  const data = parseComparisonSlug(params.slug);
+  const data = parseComparisonSlug(resolvedParams.slug);
 
   // Handle invalid URLs with 404
   if (!data) {

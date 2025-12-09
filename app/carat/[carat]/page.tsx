@@ -11,9 +11,8 @@ type Props = {
   params: { carat: string };
 };
 
-// Force static generation and disable dynamic params
+// Force static generation
 export const dynamic = 'force-static';
-export const dynamicParams = false;
 
 // Generate static params for all carat hub pages
 export async function generateStaticParams() {
@@ -22,14 +21,16 @@ export async function generateStaticParams() {
 
 // Generate metadata for each carat hub page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  if (!params || !params.carat) {
+  const resolvedParams = await params;
+
+  if (!resolvedParams || !resolvedParams.carat) {
     return {
       title: 'Diamond Carat Comparison | Carat Compare',
       description: 'Compare diamond carat weights and sizes.',
     };
   }
 
-  const caratValue = parseFloat(params.carat);
+  const caratValue = parseFloat(resolvedParams.carat);
 
   if (isNaN(caratValue) || !VALID_CARATS.includes(caratValue)) {
     return {
@@ -66,12 +67,14 @@ function getDimensions(shape: string, carat: number) {
 }
 
 // Carat hub page component
-export default function CaratHubPage({ params }: Props) {
-  if (!params || !params.carat) {
+export default async function CaratHubPage({ params }: Props) {
+  const resolvedParams = await params;
+
+  if (!resolvedParams || !resolvedParams.carat) {
     notFound();
   }
 
-  const caratValue = parseFloat(params.carat);
+  const caratValue = parseFloat(resolvedParams.carat);
 
   // Validate carat
   if (isNaN(caratValue) || !VALID_CARATS.includes(caratValue)) {
