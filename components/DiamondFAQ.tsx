@@ -6,9 +6,8 @@ import { trackFAQExpand, trackAffiliateClick } from '@/lib/analytics'
 
 // Affiliate retailer links
 const RETAILERS = {
-  blueNile: 'https://www.bluenile.com/diamond-search',
-  jamesAllen: 'https://www.jamesallen.com/loose-diamonds/all-diamonds/',
-  brilliantEarth: 'https://www.brilliantearth.com/engagement-rings/start-with-a-diamond/',
+  blueNile: 'https://bluenile.com/diamond-search?a_aid=6938679a08145',
+  jamesAllen: 'https://jamesallen.com/loose-diamonds/all-diamonds/?a_aid=6938679a08145',
 }
 
 // Helper to render text with affiliate links
@@ -92,7 +91,7 @@ const faqs = [
     answer: (
       <>
         Yes, always. A certificate from GIA or AGS proves what you're actually getting. Without it, you're just trusting whatever the seller tells you, and jewelers are notorious for grade inflation on uncertified stones. GIA is the gold standard—most trusted, most consistent. AGS is also great. IGI and HRD are fine for lab-grown. But if there's no cert or it's from some random lab you've never heard of, walk away. You have no idea what you're really buying.{' '}
-        <AffiliateLink href={RETAILERS.brilliantEarth} retailer="Brilliant Earth">Shop certified diamonds at Brilliant Earth</AffiliateLink>.
+        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">Browse certified diamonds at Blue Nile</AffiliateLink>.
       </>
     )
   },

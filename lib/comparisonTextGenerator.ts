@@ -171,7 +171,7 @@ export function generateComparisonText(
     text += `Beyond size, consider that ${shape1} diamonds tend to have different brilliance patterns compared to ${shape2} cuts. `;
   }
 
-  text += `Use the interactive visual tool above to see these diamonds side-by-side with a US dime for real-world scale reference. The measurements shown are based on well-cut diamonds with standard proportions. When you're ready to shop, browse certified diamonds at Blue Nile, James Allen, or Brilliant Earth using the buttons above to compare prices and find your perfect diamond.`;
+  text += `Use the interactive visual tool above to see these diamonds side-by-side with a US dime for real-world scale reference. The measurements shown are based on well-cut diamonds with standard proportions. When you're ready to shop, browse certified diamonds at Blue Nile or James Allen using the buttons above to compare prices and find your perfect diamond.`;
 
   return text;
 }
