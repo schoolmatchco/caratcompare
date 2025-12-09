@@ -6,8 +6,6 @@ import DiamondDisplay from './DiamondDisplay'
 import ChangeButton from './ChangeButton'
 import ShoppingSection from './ShoppingSection'
 import ChangeModal from './ChangeModal'
-import Footer from './Footer'
-import DiamondFAQ from './DiamondFAQ'
 import diamondSizes from '@/data/diamond-sizes.json'
 
 interface ComparisonAreaProps {
@@ -159,12 +157,6 @@ export default function ComparisonArea({
         <div className="w-full max-w-2xl h-px bg-gray-400"></div>
       </div>
       <ShoppingSection carat={carat2} shape={shape2} position="bottom" />
-
-      {/* FAQ Section */}
-      <DiamondFAQ />
-
-      {/* Footer */}
-      <Footer />
 
       {/* Change Modal */}
       {isModalOpen && (

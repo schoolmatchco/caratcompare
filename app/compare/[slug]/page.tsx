@@ -133,25 +133,25 @@ export default async function ComparisonPage({ params }: Props) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <a
                   href={`/${shape1}`}
-                  className="text-cyan hover:text-cyan/80 transition-colors text-sm"
+                  className="text-gray-200 hover:text-white underline transition-colors text-sm"
                 >
                   View all {capitalize(shape1)} comparisons →
                 </a>
                 <a
                   href={`/${shape2}`}
-                  className="text-magenta hover:text-magenta/80 transition-colors text-sm"
+                  className="text-gray-200 hover:text-white underline transition-colors text-sm"
                 >
                   View all {capitalize(shape2)} comparisons →
                 </a>
                 <a
                   href={`/carat/${formatCaratForDisplay(carat1)}`}
-                  className="text-cyan hover:text-cyan/80 transition-colors text-sm"
+                  className="text-gray-200 hover:text-white underline transition-colors text-sm"
                 >
                   View all {formatCaratForDisplay(carat1)} carat diamonds →
                 </a>
                 <a
                   href={`/carat/${formatCaratForDisplay(carat2)}`}
-                  className="text-magenta hover:text-magenta/80 transition-colors text-sm"
+                  className="text-gray-200 hover:text-white underline transition-colors text-sm"
                 >
                   View all {formatCaratForDisplay(carat2)} carat diamonds →
                 </a>
