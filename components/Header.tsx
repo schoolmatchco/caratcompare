@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
   return (
     <header className="w-full bg-header-black flex items-center justify-center py-6 px-4">
-      <div className="relative w-64 h-12">
+      <Link href="/" className="relative w-64 h-12 cursor-pointer hover:opacity-90 transition-opacity">
         <Image
           src="/svg/Logo 3.svg"
           alt="Carat Compare Logo"
@@ -11,7 +12,7 @@ export default function Header() {
           className="object-contain"
           priority
         />
-      </div>
+      </Link>
     </header>
   )
 }
