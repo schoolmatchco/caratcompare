@@ -16,7 +16,37 @@ const retailers = [
 
 export default function ShoppingSection({ carat, shape, position = 'top' }: ShoppingSectionProps) {
   const shapeName = shape.charAt(0).toUpperCase() + shape.slice(1)
-  const basePrice = Math.round(carat * 2000 + Math.random() * 500)
+
+  // Realistic diamond pricing model
+  // Base price per carat varies by size (larger stones command premium)
+  const basePricePerCarat = (() => {
+    if (carat < 0.5) return 1200
+    if (carat < 1.0) return 2800
+    if (carat < 1.5) return 4500
+    if (carat < 2.0) return 6500
+    if (carat < 3.0) return 8500
+    return 11000
+  })()
+
+  // Shape price multipliers (round commands premium, fancy shapes are typically 10-30% less)
+  const shapeMultiplier: { [key: string]: number } = {
+    round: 1.0,
+    princess: 0.75,
+    cushion: 0.80,
+    emerald: 0.85,
+    asscher: 0.85,
+    oval: 0.80,
+    pear: 0.75,
+    marquise: 0.70,
+    radiant: 0.75,
+    heart: 0.80,
+  }
+
+  // Price increases exponentially with carat weight (price = carat^1.5 × base × shape multiplier)
+  const estimatedPrice = Math.round(
+    Math.pow(carat, 1.5) * basePricePerCarat * (shapeMultiplier[shape] || 0.8)
+  )
+
   const highlightColor = position === 'top' ? 'rgba(7, 244, 255, 0.2)' : 'rgba(250, 6, 255, 0.1)'
   const paddingClass = position === 'top' ? 'pt-16 pb-8' : 'pt-8 pb-16'
 
@@ -65,7 +95,7 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
 
               {/* Price Text - Bigger with ellipsis */}
               <span className="text-gray-900 font-medium italic" style={{ fontSize: '0.9375rem' }}>
-                ...from ${basePrice.toLocaleString()}
+                ...from ${estimatedPrice.toLocaleString()}
               </span>
             </motion.div>
           ))}
