@@ -2,6 +2,46 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.3.0] - 2024-12-08
+
+### Added
+- **Comprehensive Event Tracking**: Full interaction tracking across all user touchpoints
+  - Created `lib/analytics.ts` utility with descriptive event tracking functions
+  - All events use clear, human-readable names and labels for easy GA4 analysis
+
+- **Affiliate Click Tracking**: Track every affiliate link click with full context
+  - Event name: `Affiliate Click - [Retailer Name]`
+  - Event label: `[Retailer] - [X.Xct] [Shape] - [Logo Button|Check Prices Link]`
+  - Tracks: retailer, carat, shape, link type (logo vs text)
+  - Example: "Affiliate Click - Blue Nile" with label "Blue Nile - 1.5ct Oval - Logo Button"
+
+- **Shop Button Tracking**: Monitor which diamonds drive shopping intent
+  - Event name: `Shop Button Click`
+  - Event label: `Shop [X.Xct] [Shape] ([Left|Right] Diamond)`
+  - Tracks: carat, shape, position on screen
+  - Example: "Shop 1.5ct Oval (Left Diamond)"
+
+- **Comparison Tool Tracking**: See what diamond comparisons users create
+  - Event name: `Comparison Updated`
+  - Event label: `[X.Xct] [Shape] vs [X.Xct] [Shape]`
+  - Tracks: both diamond specs (carat1, shape1, carat2, shape2)
+  - Example: "0.5ct Heart vs 1.25ct Round"
+
+- **FAQ Engagement Tracking**: Understand which questions matter most
+  - Event name: `FAQ Expanded`
+  - Event label: [exact question text]
+  - Tracks only expansions (not collapses) to measure true engagement
+  - Example: "Does diamond size matter?"
+
+- **Navigation Tracking**: Monitor user flow
+  - Change button: `Change Button Click` - "Open Comparison Modal"
+  - Logo clicks: `Logo Click` - "Return to Homepage"
+
+### Technical
+- All components updated with analytics imports and tracking calls
+- Event tracking follows GA4 best practices with clear categories and labels
+- Tracking functions designed for maximum clarity in GA4 reports dashboard
+
 ## [1.2.0] - 2024-12-08
 
 ### Added
