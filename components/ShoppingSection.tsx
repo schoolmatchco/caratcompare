@@ -36,29 +36,29 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
           </h2>
         </div>
 
-        {/* Retailer Rows - Closer together */}
-        <div className="space-y-2">
+        {/* Retailer Rows - More space on mobile */}
+        <div className="space-y-3">
           {retailers.map((retailer, index) => (
             <motion.div
               key={retailer.name}
-              className="flex items-center justify-between"
+              className="flex items-center justify-between gap-2"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
             >
-              {/* Logo Button */}
+              {/* Logo Button - Smaller on mobile */}
               <motion.a
                 href={retailer.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-colors"
+                className="inline-flex items-center bg-gray-800 text-white px-3 py-2 md:px-4 md:py-3 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <img
                   src={retailer.logo}
                   alt={retailer.name}
-                  className="h-4 object-contain brightness-0 invert"
+                  className="h-3 md:h-4 object-contain brightness-0 invert"
                 />
               </motion.a>
 
@@ -69,10 +69,9 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                className="text-gray-900 font-medium hover:text-gray-700 transition-colors underline"
-                style={{ fontSize: '0.9375rem' }}
+                className="text-gray-900 font-medium hover:text-gray-700 transition-colors underline text-sm md:text-base"
               >
-                Check Latest Prices →
+                Check Prices →
               </motion.a>
             </motion.div>
           ))}
