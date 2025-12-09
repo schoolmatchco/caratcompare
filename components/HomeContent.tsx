@@ -3,6 +3,8 @@
 import { useSearchParams } from 'next/navigation'
 import Header from '@/components/Header'
 import ComparisonArea from '@/components/ComparisonArea'
+import DiamondFAQ from '@/components/DiamondFAQ'
+import Footer from '@/components/Footer'
 
 export default function HomeContent() {
   const searchParams = useSearchParams()
@@ -34,14 +36,33 @@ export default function HomeContent() {
   const shape2 = searchParams.get('shape2') || defaults.randomShape2
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-main-gray">
       <Header />
+
+      {/* Main heading for SEO */}
+      <div className="text-center pt-8 pb-4 px-4">
+        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+          <span className="text-white">CARAT</span>
+          <span className="font-thin mx-3">&</span>
+          <span className="text-white">SHAPE</span>
+        </h1>
+        <p className="text-white text-lg md:text-xl mt-2 font-light">
+          DIAMOND SIZE & SHAPE COMPARISON TOOL
+        </p>
+      </div>
+
       <ComparisonArea
         initialCarat1={carat1}
         initialShape1={shape1}
         initialCarat2={carat2}
         initialShape2={shape2}
       />
+
+      {/* FAQ section */}
+      <DiamondFAQ />
+
+      {/* Footer */}
+      <Footer />
     </main>
   )
 }
