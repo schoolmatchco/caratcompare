@@ -9,9 +9,9 @@ interface ShoppingSectionProps {
 }
 
 const retailers = [
-  { name: 'Blue Nile', logo: '/svg/retailers/blue-nile.svg', url: 'https://www.bluenile.com' },
-  { name: 'James Allen', logo: '/svg/retailers/james-allen.svg', url: 'https://www.jamesallen.com' },
-  { name: 'Brilliant Earth', logo: '/svg/retailers/brilliant-earth.svg', url: 'https://www.brilliantearth.com' },
+  { name: 'Blue Nile', logo: '/svg/retailers/blue-nile.svg', url: 'https://www.bluenile.com/diamond-search' },
+  { name: 'James Allen', logo: '/svg/retailers/james-allen.svg', url: 'https://www.jamesallen.com/loose-diamonds/all-diamonds/' },
+  { name: 'Brilliant Earth', logo: '/svg/retailers/brilliant-earth.svg', url: 'https://www.brilliantearth.com/loose-diamonds/search/' },
 ]
 
 export default function ShoppingSection({ carat, shape, position = 'top' }: ShoppingSectionProps) {
