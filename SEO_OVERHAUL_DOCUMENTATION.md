@@ -322,6 +322,51 @@ export default async function ComparisonPage({ params }: Props) {
 **Fix:** Changed from `text-cyan/magenta` to `text-gray-200 hover:text-white underline`
 **Commit:** `07ce3c1`
 
+### Issue #10: Affiliate Link Integration
+**Problem:** Need to replace placeholder affiliate URLs with official partner links
+**Context:** Approved for Blue Nile (3.5% commission) and James Allen (2% commission)
+**Fix:**
+1. Updated `components/ShoppingSection.tsx` with official affiliate URLs
+2. Removed Brilliant Earth (not approved yet)
+3. Ordered retailers by commission (Blue Nile first, James Allen second)
+**Commit:** `9c762d5`
+
+### Issue #11: Missing Contextual Affiliate Links
+**Problem:** No clickable affiliate links in FAQ or comparison analysis text
+**User Feedback:** "I'm not seeing any strategically placed affiliate links in the Comparison Analysis text"
+**Fix:**
+1. Updated `components/DiamondFAQ.tsx`:
+   - Added `RETAILERS` constant with affiliate URLs
+   - Created `AffiliateLink` component with click tracking
+   - Converted 3 FAQ answers to JSX with Blue Nile links
+2. Updated `app/compare/[slug]/page.tsx`:
+   - Added clickable Blue Nile link in comparison analysis text
+   - Link: "Browse certified diamonds at Blue Nile"
+**Strategy:** All contextual links go to Blue Nile (3.5%) for maximum commission
+**Commit:** `9c762d5`
+
+### Issue #12: Shopping Section Background Too Dark
+**Problem:** Shopping section background too dark (not visible enough)
+**User Feedback:** "make the background behind the affiliate section...closer to white"
+**Fix:** Changed `shopping-gray` from `#CCCCCC` to `#F5F5F5` in `tailwind.config.ts`
+**Commit:** `a681d87`
+
+### Issue #13: TypeScript Error - Affiliate Click Tracking ⭐ BUILD BREAKING
+**Problem:** Build failed on Vercel with TypeScript error
+**Error:**
+```
+Type error: Argument of type '"faq-content"' is not assignable to parameter of type '"logo" | "text"'.
+  at components/DiamondFAQ.tsx:19:57
+```
+**Cause:** `trackAffiliateClick()` function only accepted `'logo' | 'text'` but FAQ links used `'faq-content'`
+**Fix:** Updated `lib/analytics.ts` to accept additional link types:
+```typescript
+linkType: 'logo' | 'text' | 'faq-content' | 'comparison-text'
+```
+**Benefits:** Better analytics granularity - can now track which link placements perform best
+**Commit:** `6c17a70`
+**Result:** ✅ Build passes, all 1,230 pages generated successfully
+
 ---
 
 ## Final Architecture
