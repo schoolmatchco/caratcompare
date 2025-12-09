@@ -36,6 +36,8 @@ export default function ComparisonArea({
     setShape1(initialShape1)
     setCarat2(initialCarat2)
     setShape2(initialShape2)
+    // Scroll to top when comparison changes
+    window.scrollTo(0, 0)
   }, [initialCarat1, initialShape1, initialCarat2, initialShape2])
 
   const getDimensions = (carat: number, shape: string) => {
