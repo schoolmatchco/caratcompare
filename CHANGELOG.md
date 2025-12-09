@@ -2,6 +2,29 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.3.1] - 2024-12-09
+
+### Fixed
+- **Homepage Missing Content**: Fixed critical issue where homepage was missing key elements
+  - Added H1 heading showing actual diamond comparison (e.g., "0.5 Carat Heart vs 1.25 Carat Round")
+  - Previously showed generic "CARAT & SHAPE" text - now shows specific diamonds being compared
+  - Added DiamondFAQ section to homepage
+  - Added Footer component to homepage
+  - Added proper background color to match site design
+  - Homepage now matches the structure and content of comparison pages
+
+### Changed
+- **Homepage Heading Dynamic**: H1 heading now dynamically reflects the diamonds being displayed
+  - Left diamond shown in cyan color
+  - Right diamond shown in magenta color
+  - Updates based on URL parameters or defaults to 0.5ct heart vs 1.25ct round
+  - Consistent with comparison page format throughout the site
+
+### Technical
+- Updated `components/HomeContent.tsx` to include all missing sections
+- Imported `capitalize` and `formatCaratForDisplay` utility functions from `lib/urlHelpers.ts`
+- Heading now uses same rendering logic as comparison pages for consistency
+
 ## [1.3.0] - 2024-12-08
 
 ### Added

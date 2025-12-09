@@ -5,7 +5,7 @@
 **Live Site:** https://caratcompare.co
 **Repository:** https://github.com/schoolmatchco/caratcompare
 **Status:** ✅ Deployed and Live
-**Last Updated:** December 8, 2024
+**Last Updated:** December 9, 2024
 
 ---
 
@@ -214,9 +214,19 @@ Once approved for affiliate programs, update URLs in `components/ShoppingSection
 
 ---
 
-## Recent Changes (December 8, 2024)
+## Recent Changes (December 9, 2024)
 
-### Version 1.2.0 (Latest)
+### Version 1.3.1 (Latest)
+- ✅ **Homepage Content Fixed**: Resolved critical issue where homepage was missing H1, FAQ, and Footer
+- ✅ **Dynamic Homepage Heading**: H1 now shows actual diamonds being compared (e.g., "0.5 Carat Heart vs 1.25 Carat Round")
+- ✅ Consistent design and structure across all pages
+
+### Version 1.3.0
+- ✅ **Comprehensive Event Tracking**: Full GA4 tracking for all user interactions
+- ✅ Affiliate click tracking with detailed context
+- ✅ Shop button, comparison updates, and FAQ engagement tracking
+
+### Version 1.2.0
 - ✅ **Google Analytics 4 Integration**: Full tracking implementation with GA4
 - ✅ **Fixed React Hydration Error**: Critical bug preventing proper rendering
   - Replaced random defaults with static defaults (0.5ct heart vs 1.25ct round)
@@ -390,6 +400,6 @@ Current Lighthouse scores meet all targets.
 
 ---
 
-**Last Updated**: December 8, 2024
-**Version**: 1.1.0
+**Last Updated**: December 9, 2024
+**Version**: 1.3.1
 **Status**: Production-ready, deployed, and live
