@@ -2,12 +2,37 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { trackFAQExpand } from '@/lib/analytics'
+import { trackFAQExpand, trackAffiliateClick } from '@/lib/analytics'
+
+// Affiliate retailer links
+const RETAILERS = {
+  blueNile: 'https://www.bluenile.com/diamond-search',
+  jamesAllen: 'https://www.jamesallen.com/loose-diamonds/all-diamonds/',
+  brilliantEarth: 'https://www.brilliantearth.com/engagement-rings/start-with-a-diamond/',
+}
+
+// Helper to render text with affiliate links
+const AffiliateLink = ({ href, retailer, children }: { href: string; retailer: string; children: React.ReactNode }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() => trackAffiliateClick(retailer, 0, '', 'faq-content')}
+    className="text-blue-600 hover:text-blue-800 underline"
+  >
+    {children}
+  </a>
+)
 
 const faqs = [
   {
     question: 'What are the 4Cs of diamonds?',
-    answer: 'The 4Cs are how all diamonds get graded: Cut, Color, Clarity, and Carat. Cut is how well it\'s shaped (this affects sparkle the most). Color goes from D (totally colorless) to Z (yellowish tint), though anything D through J looks white in a ring. Clarity is about tiny flaws inside—most are invisible without a jeweler\'s loupe, so VS1 or VS2 is plenty. Carat is just weight. Here\'s the trick: get an Excellent cut first, then aim for G-H color and VS2 clarity, and spend whatever\'s left on the biggest carat you can afford.'
+    answer: (
+      <>
+        The 4Cs are how all diamonds get graded: Cut, Color, Clarity, and Carat. Cut is how well it's shaped (this affects sparkle the most). Color goes from D (totally colorless) to Z (yellowish tint), though anything D through J looks white in a ring. Clarity is about tiny flaws inside—most are invisible without a jeweler's loupe, so VS1 or VS2 is plenty. Carat is just weight. Here's the trick: get an Excellent cut first, then aim for G-H color and VS2 clarity, and spend whatever's left on the biggest carat you can afford. Start your{' '}
+        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">diamond search at Blue Nile</AffiliateLink> to compare options.
+      </>
+    )
   },
   {
     question: 'Does diamond size matter?',
@@ -15,7 +40,12 @@ const faqs = [
   },
   {
     question: 'Which diamond shape looks biggest?',
-    answer: 'Oval, pear, and marquise shapes look way bigger than round diamonds at the same carat weight. A 1 carat oval is around 7.7 x 5.7mm, while a 1 carat round is only 6.5mm across. The oval spreads out more, so it covers more finger real estate even though they weigh the same. If you want maximum visual size for your budget, go with one of these elongated shapes.'
+    answer: (
+      <>
+        Oval, pear, and marquise shapes look way bigger than round diamonds at the same carat weight. A 1 carat oval is around 7.7 x 5.7mm, while a 1 carat round is only 6.5mm across. The oval spreads out more, so it covers more finger real estate even though they weigh the same. If you want maximum visual size for your budget, go with one of these elongated shapes. Browse{' '}
+        <AffiliateLink href={RETAILERS.jamesAllen} retailer="James Allen">elongated diamonds at James Allen</AffiliateLink> to see the size difference.
+      </>
+    )
   },
   {
     question: 'What diamond clarity grade should I choose?',
@@ -59,7 +89,12 @@ const faqs = [
   },
   {
     question: 'Should I buy a certified diamond?',
-    answer: 'Yes, always. A certificate from GIA or AGS proves what you\'re actually getting. Without it, you\'re just trusting whatever the seller tells you, and jewelers are notorious for grade inflation on uncertified stones. GIA is the gold standard—most trusted, most consistent. AGS is also great. IGI and HRD are fine for lab-grown. But if there\'s no cert or it\'s from some random lab you\'ve never heard of, walk away. You have no idea what you\'re really buying.'
+    answer: (
+      <>
+        Yes, always. A certificate from GIA or AGS proves what you're actually getting. Without it, you're just trusting whatever the seller tells you, and jewelers are notorious for grade inflation on uncertified stones. GIA is the gold standard—most trusted, most consistent. AGS is also great. IGI and HRD are fine for lab-grown. But if there's no cert or it's from some random lab you've never heard of, walk away. You have no idea what you're really buying.{' '}
+        <AffiliateLink href={RETAILERS.brilliantEarth} retailer="Brilliant Earth">Shop certified diamonds at Brilliant Earth</AffiliateLink>.
+      </>
+    )
   },
   {
     question: 'What\'s the difference between GIA and IGI certification?',
@@ -124,9 +159,9 @@ export default function DiamondFAQ() {
                       className="overflow-hidden"
                     >
                       <div className="pb-4 px-4">
-                        <p className="text-gray-800 text-base font-normal leading-relaxed">
+                        <div className="text-gray-800 text-base font-normal leading-relaxed">
                           {faq.answer}
-                        </p>
+                        </div>
                       </div>
                     </motion.div>
                   )}
