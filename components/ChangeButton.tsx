@@ -1,15 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { trackChangeButtonClick } from '@/lib/analytics'
 
 interface ChangeButtonProps {
   onClick: () => void
 }
 
 export default function ChangeButton({ onClick }: ChangeButtonProps) {
+  const handleClick = () => {
+    trackChangeButtonClick()
+    onClick()
+  }
+
   return (
     <motion.button
-      onClick={onClick}
+      onClick={handleClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
       animate={{

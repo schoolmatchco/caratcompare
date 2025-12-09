@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { trackShopButtonClick } from '@/lib/analytics'
 
 interface DiamondDisplayProps {
   carat: number
@@ -111,6 +112,7 @@ export default function DiamondDisplay({ carat, shape, width, height, position =
         </div>
         <motion.a
           href="#shopping"
+          onClick={() => trackShopButtonClick(carat, shape, position)}
           whileHover={{ scale: 1.05, backgroundColor: 'rgba(30, 30, 30, 0.9)' }}
           whileTap={{ scale: 0.98 }}
           className="px-2 py-1 rounded text-xs font-medium transition-colors"

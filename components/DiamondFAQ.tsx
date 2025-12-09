@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { trackFAQExpand } from '@/lib/analytics'
 
 const faqs = [
   {
@@ -34,7 +35,12 @@ export default function DiamondFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
+    const isCurrentlyOpen = openIndex === index
+    if (!isCurrentlyOpen) {
+      // Track only when expanding (not collapsing)
+      trackFAQExpand(faqs[index].question)
+    }
+    setOpenIndex(isCurrentlyOpen ? null : index)
   }
 
   return (

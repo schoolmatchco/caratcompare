@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { trackComparisonChange } from '@/lib/analytics'
 
 interface ChangeModalProps {
   carat1: number
@@ -30,6 +31,7 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
   }, [])
 
   const handleApply = () => {
+    trackComparisonChange(selectedCarat1, selectedShape1, selectedCarat2, selectedShape2)
     onApply(selectedCarat1, selectedShape1, selectedCarat2, selectedShape2)
     onClose()
   }

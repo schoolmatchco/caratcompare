@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { trackAffiliateClick } from '@/lib/analytics'
 
 interface ShoppingSectionProps {
   carat: number
@@ -51,6 +52,7 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
                 href={retailer.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackAffiliateClick(retailer.name, carat, shape, 'logo')}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center bg-gray-800 text-white px-4 py-2.5 md:px-4 md:py-3 rounded-lg hover:bg-gray-700 transition-colors"
@@ -67,6 +69,7 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
                 href={retailer.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackAffiliateClick(retailer.name, carat, shape, 'text')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="text-gray-900 font-medium hover:text-gray-700 transition-colors underline text-sm md:text-base"
