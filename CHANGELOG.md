@@ -2,6 +2,38 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.1.0] - 2024-12-08
+
+### Added
+- **Diamond FAQ Section**: Comprehensive FAQ with 6 collapsible questions
+  - Professional bordered containers with plus/minus toggle icons
+  - Smooth expand/collapse animations
+  - Covers common diamond shopping questions
+- **Clickable Logo**: Logo now links to home page (caratcompare.co) without URL parameters
+- **Favicon**: Custom cyan/magenta split diamond favicon matching brand colors
+
+### Changed
+- **Affiliate Links Updated**: Switched to non-affiliate URLs for pre-approval period
+  - Blue Nile: https://www.bluenile.com/diamond-search
+  - James Allen: https://www.jamesallen.com/loose-diamonds/all-diamonds/
+  - Brilliant Earth: https://www.brilliantearth.com/engagement-rings/start-with-a-diamond/
+- **Pricing Display Removed**: Eliminated estimated pricing to avoid misleading users
+  - Replaced "...from $X" with "Check Prices →" CTA
+  - Simpler, more trustworthy approach
+- **Subtitle Updated**: Changed to "DIAMOND SIZE & SHAPE COMPARISON TOOL"
+- **Mobile Shopping Section**: Improved responsive layout
+  - Buttons slightly bigger on mobile (px-4 py-2.5)
+  - Logos increased to h-3.5 on mobile
+  - Added horizontal padding (px-2) to prevent edge crowding
+  - Increased gap between elements (gap-3)
+
+### Fixed
+- **Dimension Line Alignment**: Fixed mismatch for rotated diamond shapes
+  - For elongated shapes (marquise, pear, oval, emerald, etc.)
+  - Dimension line now correctly measures visual horizontal width after rotation
+  - Example: 0.75ct marquise shows "9.0mm" with matching 45px dimension line
+- **Mobile Layout**: Shopping section buttons and links no longer crowd on small screens
+
 ## [Unreleased] - 2024-12-08
 
 ### Added
