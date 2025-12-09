@@ -126,23 +126,14 @@ export default async function ComparisonPage({ params }: Props) {
                 </p>
               ))}
               <p className="mb-4 leading-relaxed">
-                Ready to shop? Browse certified diamonds at{' '}
+                Ready to shop? Browse{' '}
                 <a
                   href="https://bluenile.com/diamond-search?a_aid=6938679a08145"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 underline"
                 >
-                  Blue Nile
-                </a>
-                {' '}or{' '}
-                <a
-                  href="https://jamesallen.com/loose-diamonds/all-diamonds/?a_aid=6938679a08145"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 underline"
-                >
-                  James Allen
+                  certified diamonds at Blue Nile
                 </a>
                 {' '}to compare prices and find your perfect diamond.
               </p>

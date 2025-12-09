@@ -42,7 +42,7 @@ const faqs = [
     answer: (
       <>
         Oval, pear, and marquise shapes look way bigger than round diamonds at the same carat weight. A 1 carat oval is around 7.7 x 5.7mm, while a 1 carat round is only 6.5mm across. The oval spreads out more, so it covers more finger real estate even though they weigh the same. If you want maximum visual size for your budget, go with one of these elongated shapes. Browse{' '}
-        <AffiliateLink href={RETAILERS.jamesAllen} retailer="James Allen">elongated diamonds at James Allen</AffiliateLink> to see the size difference.
+        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">elongated diamonds at Blue Nile</AffiliateLink> to see the size difference.
       </>
     )
   },
