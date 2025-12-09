@@ -126,14 +126,14 @@ export default async function ComparisonPage({ params }: Props) {
                 </p>
               ))}
               <p className="mb-4 leading-relaxed">
-                Ready to shop? Browse{' '}
+                Ready to shop?{' '}
                 <a
                   href="https://www.bluenile.com/diamond-search?a_aid=6938679a08145&a_cid=55e51e63"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 underline"
                 >
-                  certified diamonds at Blue Nile
+                  Browse certified diamonds
                 </a>
                 {' '}to compare prices and find your perfect diamond.
               </p>

@@ -28,8 +28,8 @@ const faqs = [
     question: 'What are the 4Cs of diamonds?',
     answer: (
       <>
-        The 4Cs are how all diamonds get graded: Cut, Color, Clarity, and Carat. Cut is how well it's shaped (this affects sparkle the most). Color goes from D (totally colorless) to Z (yellowish tint), though anything D through J looks white in a ring. Clarity is about tiny flaws inside—most are invisible without a jeweler's loupe, so VS1 or VS2 is plenty. Carat is just weight. Here's the trick: get an Excellent cut first, then aim for G-H color and VS2 clarity, and spend whatever's left on the biggest carat you can afford. Start your{' '}
-        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">diamond search at Blue Nile</AffiliateLink> to compare options.
+        The 4Cs are how all diamonds get graded: Cut, Color, Clarity, and Carat. Cut is how well it's shaped (this affects sparkle the most). Color goes from D (totally colorless) to Z (yellowish tint), though anything D through J looks white in a ring. Clarity is about tiny flaws inside—most are invisible without a jeweler's loupe, so VS1 or VS2 is plenty. Carat is just weight. Here's the trick: get an Excellent cut first, then aim for G-H color and VS2 clarity, and spend whatever's left on the biggest carat you can afford.{' '}
+        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">Start your diamond search</AffiliateLink> to compare options.
       </>
     )
   },
@@ -41,8 +41,8 @@ const faqs = [
     question: 'Which diamond shape looks biggest?',
     answer: (
       <>
-        Oval, pear, and marquise shapes look way bigger than round diamonds at the same carat weight. A 1 carat oval is around 7.7 x 5.7mm, while a 1 carat round is only 6.5mm across. The oval spreads out more, so it covers more finger real estate even though they weigh the same. If you want maximum visual size for your budget, go with one of these elongated shapes. Browse{' '}
-        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">elongated diamonds at Blue Nile</AffiliateLink> to see the size difference.
+        Oval, pear, and marquise shapes look way bigger than round diamonds at the same carat weight. A 1 carat oval is around 7.7 x 5.7mm, while a 1 carat round is only 6.5mm across. The oval spreads out more, so it covers more finger real estate even though they weigh the same. If you want maximum visual size for your budget, go with one of these elongated shapes.{' '}
+        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">Browse elongated diamonds</AffiliateLink> to see the size difference.
       </>
     )
   },
@@ -91,7 +91,7 @@ const faqs = [
     answer: (
       <>
         Yes, always. A certificate from GIA or AGS proves what you're actually getting. Without it, you're just trusting whatever the seller tells you, and jewelers are notorious for grade inflation on uncertified stones. GIA is the gold standard—most trusted, most consistent. AGS is also great. IGI and HRD are fine for lab-grown. But if there's no cert or it's from some random lab you've never heard of, walk away. You have no idea what you're really buying.{' '}
-        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">Browse certified diamonds at Blue Nile</AffiliateLink>.
+        <AffiliateLink href={RETAILERS.blueNile} retailer="Blue Nile">Browse certified diamonds</AffiliateLink>.
       </>
     )
   },
