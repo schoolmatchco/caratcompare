@@ -116,6 +116,10 @@ const SHAPE_INFO: Record<string, { description: string; characteristics: string[
   },
 };
 
+// Force static generation and disable dynamic params
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 // Generate static params for all shape hub pages
 export async function generateStaticParams() {
   return generateShapeStaticParams();

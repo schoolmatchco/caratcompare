@@ -11,6 +11,10 @@ type Props = {
   params: { carat: string };
 };
 
+// Force static generation and disable dynamic params
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 // Generate static params for all carat hub pages
 export async function generateStaticParams() {
   return generateCaratStaticParams();
