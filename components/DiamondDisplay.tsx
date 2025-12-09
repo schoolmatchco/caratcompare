@@ -16,8 +16,15 @@ export default function DiamondDisplay({ carat, shape, width, height, position =
 
   // For elongated shapes (width > height), rotate 90deg so longest dimension is horizontal
   const needsRotation = width > height
-  const displayWidth = width * scale
-  const displayHeight = height * scale
+
+  // SVG container dimensions (swapped for rotation)
+  const containerWidth = needsRotation ? height * scale : width * scale
+  const containerHeight = needsRotation ? width * scale : height * scale
+
+  // Dimension line should measure the VISUAL horizontal width after rotation
+  // For rotated shapes, this is the original width; for non-rotated, it's also width
+  const visualWidth = width * scale
+  const measurementValue = width
 
   // Format carat: show .25/.75 with 2 decimals, whole numbers and .5 with 1 decimal
   const formatCarat = (c: number) => {
@@ -39,10 +46,10 @@ export default function DiamondDisplay({ carat, shape, width, height, position =
           transition={{ duration: 0.4 }}
           className="text-white text-sm mb-2"
         >
-          ~ {width.toFixed(1)} mm
+          ~ {measurementValue.toFixed(1)} mm
         </motion.p>
         {/* Horizontal line with tick marks */}
-        <div className="flex items-center" style={{ width: `${Math.min(displayWidth, 100)}px` }}>
+        <div className="flex items-center" style={{ width: `${Math.min(visualWidth, 100)}px` }}>
           {/* Left tick */}
           <div className="flex flex-col items-center">
             <div className="w-px h-2 bg-white"></div>
@@ -64,8 +71,8 @@ export default function DiamondDisplay({ carat, shape, width, height, position =
           animate={{
             scale: 1,
             opacity: 1,
-            width: `${displayWidth}px`,
-            height: `${displayHeight}px`
+            width: `${containerWidth}px`,
+            height: `${containerHeight}px`
           }}
           transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
           style={{
