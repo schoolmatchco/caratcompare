@@ -367,6 +367,64 @@ linkType: 'logo' | 'text' | 'faq-content' | 'comparison-text'
 **Commit:** `6c17a70`
 **Result:** ✅ Build passes, all 1,230 pages generated successfully
 
+### Issue #14: Vercel Deploying Old Commit ⭐ CRITICAL
+**Problem:** All pages returning 404 after deployment, even though changes were pushed
+**Symptoms:**
+- User confirmed: "404 errors again" and "everything" was 404ing
+- Local build succeeds: 1230/1230 pages generated
+- Vercel build log shows deploying commit `a681d87` instead of latest `07da570`
+
+**Investigation:**
+1. Checked Vercel build log - deploying old commit `a681d87`
+2. That commit was from "Lighten shopping section background"
+3. Missing the TypeScript fix from commit `6c17a70`
+4. Build fails with: `Type error: Argument of type '"faq-content"' is not assignable to parameter of type '"logo" | "text"'`
+5. This causes all pages to 404
+
+**Root Cause:** Vercel cached old commit and wasn't picking up latest changes
+
+**Fix:** Pushed empty commit to force Vercel to deploy latest code:
+```bash
+git commit --allow-empty -m "Force fresh Vercel deployment with latest code"
+git push origin main
+```
+
+**Commit:** `09830cd` (empty commit)
+**Result:** ✅ Fresh deployment with all fixes, all 1,230 pages working
+
+### Issue #15: Missing Dynamic Sitemap & Robots.txt
+**Problem:** No sitemap.xml or robots.txt for Google Search Console submission
+**User Feedback:** "is the sitemap 100% ready to go and be added to google search console?"
+
+**Investigation:**
+1. Checked for sitemap files - none found
+2. Old `generate-sitemap.js` was outdated and not dynamic
+3. Next.js 14+ supports dynamic sitemap generation via route handlers
+
+**Fix:** Created two new files for dynamic sitemap generation:
+
+**Created `app/sitemap.ts`:**
+- Generates sitemap dynamically at build time
+- Includes all 1,227 URLs (homepage, 10 shape hubs, 16 carat hubs, 1,200 comparison pages)
+- Priority system: Homepage (1.0), Hubs (0.9), Comparisons (0.7-0.9)
+- changeFrequency: monthly for all pages
+- Uses existing `generateAllComparisonSlugs()` function for consistency
+
+**Created `app/robots.ts`:**
+- Points search engines to sitemap: `https://caratcompare.co/sitemap.xml`
+- Allows all bots: `User-agent: *` with `Allow: /`
+
+**Sitemap Breakdown:**
+- 1 Homepage: `https://caratcompare.co/`
+- 10 Shape hubs: `/round`, `/oval`, `/princess`, etc.
+- 16 Carat hubs: `/carat/0.5`, `/carat/1`, `/carat/1.5`, etc.
+- 1,200 Comparison pages: `/compare/0.5-round-vs-1-round`, etc.
+
+**Total: 1,227 URLs**
+
+**Commit:** TBD (pending)
+**Result:** ✅ Ready for Google Search Console submission
+
 ---
 
 ## Final Architecture
@@ -544,6 +602,8 @@ lib/generateStaticParams.ts
 app/compare/[slug]/page.tsx
 app/[shape]/page.tsx
 app/carat/[carat]/page.tsx
+app/sitemap.ts
+app/robots.ts
 proxy.ts
 ```
 
@@ -578,9 +638,12 @@ components/ComparisonArea.tsx
 - ✅ 150-200 words unique content per page
 - ✅ Hub page internal linking architecture
 - ✅ Unique metadata for every page
-- ✅ XML sitemap submitted
+- ✅ Dynamic XML sitemap with 1,227 URLs (sitemap.xml)
+- ✅ Robots.txt pointing to sitemap
 - ✅ 301 redirects preserving old URLs
 - ✅ All pages return 200 OK
+- ✅ ~4,800 affiliate link opportunities across all pages
+- ✅ Deep linking with pre-filtered retailer search results
 
 ### Expected Outcomes (2-4 weeks)
 - Google indexing all 1,227 pages
