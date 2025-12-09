@@ -9,15 +9,49 @@ interface ShoppingSectionProps {
   position?: 'top' | 'bottom'
 }
 
-const retailers = [
-  { name: 'Blue Nile', logo: '/svg/retailers/blue-nile.svg', url: 'https://bluenile.com/diamond-search?a_aid=6938679a08145' },
-  { name: 'James Allen', logo: '/svg/retailers/james-allen.svg', url: 'https://jamesallen.com/loose-diamonds/all-diamonds/?a_aid=6938679a08145' },
-]
+// Map internal shape names to retailer URL formats
+const shapeMapping: Record<string, string> = {
+  'round': 'round-cut',
+  'princess': 'princess-cut',
+  'cushion': 'cushion-cut',
+  'oval': 'oval-cut',
+  'emerald': 'emerald-cut',
+  'pear': 'pear-shaped',
+  'asscher': 'asscher-cut',
+  'heart': 'heart-shaped',
+  'radiant': 'radiant-cut',
+  'marquise': 'marquise-cut',
+}
+
+// Build deep links with shape and carat filtering
+const buildRetailerUrl = (retailer: 'bluenile' | 'jamesallen', carat: number, shape: string): string => {
+  const shapeName = shapeMapping[shape.toLowerCase()] || 'round-cut'
+
+  if (retailer === 'bluenile') {
+    return `https://www.bluenile.com/diamond-search?CaratFrom=${carat}&CaratTo=${carat}&Shape=${shapeName}&a_aid=6938679a08145&a_cid=55e51e63`
+  } else {
+    return `https://www.jamesallen.com/loose-diamonds/all-diamonds/?Shape=${shapeName}&CaratFrom=${carat}&CaratTo=${carat}&a_aid=6938679a08145&a_cid=dfef9309`
+  }
+}
 
 export default function ShoppingSection({ carat, shape, position = 'top' }: ShoppingSectionProps) {
   const shapeName = shape.charAt(0).toUpperCase() + shape.slice(1)
   const highlightColor = position === 'top' ? 'rgba(7, 244, 255, 0.2)' : 'rgba(250, 6, 255, 0.1)'
   const paddingClass = position === 'top' ? 'pt-16 pb-8' : 'pt-8 pb-16'
+
+  // Build retailer data with dynamic deep links
+  const retailers = [
+    {
+      name: 'Blue Nile',
+      logo: '/svg/retailers/blue-nile.svg',
+      url: buildRetailerUrl('bluenile', carat, shape)
+    },
+    {
+      name: 'James Allen',
+      logo: '/svg/retailers/james-allen.svg',
+      url: buildRetailerUrl('jamesallen', carat, shape)
+    },
+  ]
 
   return (
     <motion.div

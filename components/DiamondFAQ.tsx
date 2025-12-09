@@ -4,10 +4,10 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { trackFAQExpand, trackAffiliateClick } from '@/lib/analytics'
 
-// Affiliate retailer links
+// Affiliate retailer links (generic search pages with full affiliate tracking)
 const RETAILERS = {
-  blueNile: 'https://bluenile.com/diamond-search?a_aid=6938679a08145',
-  jamesAllen: 'https://jamesallen.com/loose-diamonds/all-diamonds/?a_aid=6938679a08145',
+  blueNile: 'https://www.bluenile.com/diamond-search?a_aid=6938679a08145&a_cid=55e51e63',
+  jamesAllen: 'https://www.jamesallen.com/loose-diamonds/all-diamonds/?a_aid=6938679a08145&a_cid=dfef9309',
 }
 
 // Helper to render text with affiliate links

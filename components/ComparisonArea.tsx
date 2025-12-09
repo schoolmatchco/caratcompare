@@ -69,16 +69,6 @@ export default function ComparisonArea({
 
   return (
     <div className="w-full bg-main-gray min-h-screen">
-      {/* Title Section */}
-      <div className="text-center py-8 px-4">
-        <h1 className="text-white text-3xl md:text-4xl leading-tight mb-2">
-          <span className="font-black">{carat1} CARAT {shape1.toUpperCase()}</span>
-          <span className="font-normal"> vs </span>
-          <span className="font-black">{carat2} CARAT {shape2.toUpperCase()}</span>
-        </h1>
-        <p className="text-white text-xl font-light tracking-wide">DIAMOND SIZE & SHAPE COMPARISON TOOL</p>
-      </div>
-
       {/* Comparison Area - 3 Columns */}
       <div className="max-w-4xl mx-auto px-4 pb-12">
         <div className="grid grid-cols-3 gap-2">
