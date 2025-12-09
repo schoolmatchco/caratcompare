@@ -14,8 +14,14 @@ export const trackEvent = (eventName: string, parameters?: Record<string, any>) 
 
 // Specific event tracking functions with clear, descriptive labels
 
-export const trackAffiliateClick = (retailer: string, carat: number, shape: string, linkType: 'logo' | 'text') => {
-  const linkTypeLabel = linkType === 'logo' ? 'Logo Button' : 'Check Prices Link'
+export const trackAffiliateClick = (retailer: string, carat: number, shape: string, linkType: 'logo' | 'text' | 'faq-content' | 'comparison-text') => {
+  const linkTypeLabels = {
+    'logo': 'Logo Button',
+    'text': 'Check Prices Link',
+    'faq-content': 'FAQ Content Link',
+    'comparison-text': 'Comparison Analysis Link'
+  }
+  const linkTypeLabel = linkTypeLabels[linkType]
   const shapeName = shape.charAt(0).toUpperCase() + shape.slice(1)
 
   trackEvent(`Affiliate Click - ${retailer}`, {
