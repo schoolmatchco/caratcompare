@@ -149,7 +149,16 @@ export default async function CaratHubPage({ params }: Props) {
           </h2>
           <p className="text-gray-300 text-lg mb-6">
             A {caratDisplay} carat diamond varies in appearance depending on the shape. Here are the actual
-            dimensions (width × height) for each cut:
+            dimensions (width × height) for each cut.{' '}
+            <a
+              href={`https://www.bluenile.com/diamond-search?CaratFrom=${caratValue}&CaratTo=${caratValue}&a_aid=6938679a08145&a_cid=55e51e63`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 underline"
+            >
+              Browse {caratDisplay} carat diamonds
+            </a>{' '}
+            to see pricing and availability.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -159,7 +168,7 @@ export default async function CaratHubPage({ params }: Props) {
                 className="bg-main-gray rounded-lg p-4 border border-white/10"
               >
                 <h3 className="text-white font-bold mb-2">{capitalize(shape)}</h3>
-                <p className="text-cyan text-sm">
+                <p className="text-white text-sm">
                   {dimensions?.width}mm × {dimensions?.height}mm
                 </p>
               </div>

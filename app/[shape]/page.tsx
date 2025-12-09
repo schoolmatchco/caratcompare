@@ -224,7 +224,18 @@ export default async function ShapeHubPage({ params }: Props) {
           <h2 className="text-2xl font-bold text-white mb-4">
             About {capitalize(shape)} Cut Diamonds
           </h2>
-          <p className="text-gray-300 text-lg mb-6 leading-relaxed">{info.description}</p>
+          <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+            {info.description}{' '}
+            <a
+              href={`https://www.bluenile.com/diamonds/${shape === 'pear' || shape === 'heart' ? shape + '-shaped' : shape + '-cut'}?a_aid=6938679a08145&a_cid=55e51e63`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 underline"
+            >
+              Browse {shape} diamonds
+            </a>{' '}
+            to see pricing and availability.
+          </p>
 
           {info.characteristics.length > 0 && (
             <>
