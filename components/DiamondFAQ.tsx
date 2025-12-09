@@ -6,28 +6,68 @@ import { trackFAQExpand } from '@/lib/analytics'
 
 const faqs = [
   {
-    question: 'Does diamond size matter?',
-    answer: 'When buying a diamond, carat weight is often the biggest driver of price. However, physical dimensions (millimeters) don\'t always scale linearly with weight. For example, a 2.0ct diamond is twice as heavy as a 1.0ct, but only about 25% wider visually. Use the comparison tool above to visualize exactly how much "face-up" surface area you gain by moving up in carat weight.'
+    question: 'What are the 4Cs of diamonds?',
+    answer: 'The 4Cs are how all diamonds get graded: Cut, Color, Clarity, and Carat. Cut is how well it\'s shaped (this affects sparkle the most). Color goes from D (totally colorless) to Z (yellowish tint), though anything D through J looks white in a ring. Clarity is about tiny flaws inside—most are invisible without a jeweler\'s loupe, so VS1 or VS2 is plenty. Carat is just weight. Here\'s the trick: get an Excellent cut first, then aim for G-H color and VS2 clarity, and spend whatever\'s left on the biggest carat you can afford.'
   },
   {
-    question: 'What\'s the difference between carat weight and size?',
-    answer: 'Carat (ct) measures weight, not size. One carat equals 200 milligrams. Two diamonds with the same carat weight can look different sizes depending on their cut proportions and shape. A well-cut diamond maximizes face-up appearance, while a poorly cut diamond may hide weight in the depth, appearing smaller. This is why comparing millimeter dimensions is more reliable than carat alone.'
+    question: 'Does diamond size matter?',
+    answer: 'Size definitely matters for visual impact, but here\'s the weird part: carat weight doesn\'t scale the way you\'d think. A 2 carat diamond weighs twice as much as a 1 carat, but it only looks about 25% bigger from the top. That\'s because weight includes the depth you can\'t see when it\'s mounted. Use the comparison tool above to see exactly how much bigger one carat looks compared to another—the difference might surprise you.'
   },
   {
     question: 'Which diamond shape looks biggest?',
-    answer: 'Elongated shapes like Oval, Pear, and Marquise typically appear larger than Round diamonds of the same carat weight because they have more surface area spread across their length and width. For example, a 1.0ct Oval might measure 7.7 x 5.7mm, while a 1.0ct Round is 6.5mm in diameter. The Oval visually covers more finger space despite weighing the same.'
+    answer: 'Oval, pear, and marquise shapes look way bigger than round diamonds at the same carat weight. A 1 carat oval is around 7.7 x 5.7mm, while a 1 carat round is only 6.5mm across. The oval spreads out more, so it covers more finger real estate even though they weigh the same. If you want maximum visual size for your budget, go with one of these elongated shapes.'
+  },
+  {
+    question: 'What diamond clarity grade should I choose?',
+    answer: 'VS1 or VS2 is the sweet spot. These are "Very Slightly Included" which sounds worse than it is—you literally cannot see anything wrong with the naked eye. VVS and Flawless grades cost way more but look exactly the same unless you use a microscope. SI1 can work if you examine it closely first, since some have visible specks. Unless you\'re buying it as an investment or really care about the certificate saying "Flawless," just get VS2 and save the money.'
+  },
+  {
+    question: 'What color grade is best for a diamond?',
+    answer: 'G or H color is where you get the most bang for your buck. They\'re called "near-colorless" but they look completely white when they\'re set in a ring, especially with white gold or platinum. D-F grades (colorless) cost 15-25% more and honestly you can\'t tell the difference unless you put them side-by-side without a setting. If you\'re doing yellow or rose gold, you can even drop to I or J since the warm metal hides any hint of tint anyway.'
+  },
+  {
+    question: 'What is diamond cut quality and why does it matter?',
+    answer: 'Cut quality is literally the difference between a diamond that lights up a room and one that looks like glass. It\'s how well the facets are angled to bounce light back at you. An Excellent cut will sparkle like crazy. A Poor cut just sits there looking dull, even if it has perfect color and clarity. Never compromise on cut. A well-cut 0.9ct will blow away a poorly-cut 1.1ct every time—and cost less.'
+  },
+  {
+    question: 'Should I prioritize carat size or quality?',
+    answer: 'Get the best cut you can (Excellent, always), then decide if you care more about size or stats. Most people go for size: a 1.5ct with G color and VS2 clarity looks incredible and costs about the same as a 1ct with D color and VVS1 clarity. Unless you really want to flex the certificate specs, bigger usually wins because you can\'t see the difference between G and D or VS2 and VVS1 without a loupe anyway.'
+  },
+  {
+    question: 'What\'s diamond fluorescence and does it matter?',
+    answer: 'Fluorescence is when a diamond glows under UV light (like a blacklight). About 30% of diamonds have it, usually blue. Most of the time it doesn\'t affect how the diamond looks in normal light, so you can save 5-15% by getting a diamond with medium fluorescence. Strong fluorescence can sometimes make a diamond look hazy or oily in sunlight, so check the cert comments. If it doesn\'t mention haziness, you\'re fine. For D-F colorless diamonds, skip fluorescence. For G-J, it can actually make the stone look whiter.'
   },
   {
     question: 'How much should I spend on an engagement ring?',
-    answer: 'Forget the "3 months salary" myth. Spend what feels comfortable for your budget and lifestyle. The average engagement ring in the US costs $5,000-$6,000, but there\'s no "right" amount. Consider what matters most to you: size, quality, or brand. Many couples prioritize a larger, eye-clean diamond over perfect clarity grades that require magnification to see.'
+    answer: 'Ignore that old "3 months salary" nonsense. Spend what makes sense for your life. The average in the US is $5,000-$6,000, but that doesn\'t mean it\'s right for you. Some people care more about getting a bigger stone, others want top grades, others want a designer setting. There\'s no wrong answer as long as you\'re not going into debt over it. Figure out your priorities and spend accordingly.'
   },
   {
     question: 'What is the most popular diamond size for engagement rings?',
-    answer: 'The most popular carat weight for engagement rings is 1.0 carat, followed by 0.75ct and 1.5ct. Round diamonds remain the most chosen shape (about 50% of purchases), followed by Oval, Princess, and Cushion cuts. However, "popular" doesn\'t mean it\'s right for everyone—choose based on your partner\'s style, hand size, and your budget.'
+    answer: 'Most people go for 1 carat, with 0.75ct and 1.5ct being runner-ups. Round is still the most popular shape—about half of all engagement rings—but oval has been catching up fast. Princess and cushion are also pretty common. That said, "popular" doesn\'t mean it\'s right for you. Get what fits your partner\'s style and your budget, not what\'s trending.'
+  },
+  {
+    question: 'Are fancy shapes cheaper than round diamonds?',
+    answer: 'Yep, fancy shapes (anything that\'s not round) are usually 15-40% cheaper than round brilliants at the same quality and weight. Rounds waste more of the rough diamond when they\'re cut, so you pay for that. This is great news—you can get a bigger fancy shape for the same money, or save cash on the same size. Oval, cushion, and emerald are especially good deals. Princess is the cheapest if you want maximum sparkle.'
+  },
+  {
+    question: 'What\'s the bow-tie effect in oval and pear diamonds?',
+    answer: 'The bow-tie is a dark shadow across the middle of oval, pear, and marquise diamonds that looks like—you guessed it—a bow tie. Every elongated diamond has some degree of bow-tie, but a strong one kills the sparkle in the center. You can\'t tell from a certificate, you have to actually look at photos or video. A faint bow-tie is normal and fine. A thick, dark bow-tie means the diamond was cut poorly. Always ask to see a video or high-res photo before buying any fancy shape.'
   },
   {
     question: 'Do lab-grown diamonds look different from natural diamonds?',
-    answer: 'No. Lab-grown diamonds are chemically, physically, and optically identical to natural diamonds. Even professional gemologists need specialized equipment to tell them apart. The only real differences are origin (one formed in Earth\'s mantle over billions of years, the other in a lab in weeks) and price (lab-grown cost 40-60% less). Both are real diamonds with the same brilliance, hardness, and beauty.'
+    answer: 'Nope, they\'re identical. Same chemical structure, same hardness, same sparkle. Even professional jewelers can\'t tell them apart without special equipment. The only differences are how they formed (one in the earth over billions of years, one in a lab over weeks) and price (lab-grown are 40-60% cheaper). Both are real diamonds. If someone tells you they can spot a lab-grown by eye, they\'re lying.'
+  },
+  {
+    question: 'Should I buy a certified diamond?',
+    answer: 'Yes, always. A certificate from GIA or AGS proves what you\'re actually getting. Without it, you\'re just trusting whatever the seller tells you, and jewelers are notorious for grade inflation on uncertified stones. GIA is the gold standard—most trusted, most consistent. AGS is also great. IGI and HRD are fine for lab-grown. But if there\'s no cert or it\'s from some random lab you\'ve never heard of, walk away. You have no idea what you\'re really buying.'
+  },
+  {
+    question: 'What\'s the difference between GIA and IGI certification?',
+    answer: 'GIA is stricter and more consistent—their G color is everyone\'s G color. IGI tends to grade a bit more generously, especially on color and clarity (an IGI G might be an H from GIA). For natural diamonds, always get GIA. For lab-grown diamonds, IGI is totally fine since they specialize in those and the grading is reliable. IGI certs are also cheaper, which is why most lab-grown diamonds use them. Just don\'t directly compare IGI grades to GIA grades—they\'re not quite apples to apples.'
+  },
+  {
+    question: 'What\'s the most sparkly diamond shape?',
+    answer: 'Round brilliant is the sparkle king—58 facets all angled to throw maximum light. If you want a fancy shape, cushion, oval, and radiant are your best bets for fire. Princess cuts also sparkle great and they\'re cheaper. Emerald and asscher are different—they do these big flashes instead of tiny sparkles, more elegant than flashy. Pear and marquise are somewhere in the middle. Bottom line: if you want serious sparkle, go round, cushion, or oval with an Excellent cut.'
   }
 ]
 
