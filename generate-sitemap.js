@@ -9,6 +9,16 @@ const milestoneCarats = [1.00, 1.50, 2.00, 2.50, 3.00, 4.00];
 const baseUrl = 'https://caratcompare.co';
 const urls = [];
 
+// Helper: Format carat for URL (remove trailing zeros)
+function formatCarat(c) {
+  return c % 1 === 0 ? c.toString() : c.toFixed(2).replace(/\.?0+$/, '');
+}
+
+// Helper: Generate comparison slug
+function generateSlug(c1, s1, c2, s2) {
+  return `${formatCarat(c1)}-${s1}-vs-${formatCarat(c2)}-${s2}`;
+}
+
 // Helper: Canonicalize URL (ensure carat1 <= carat2, or if equal, shape1 <= shape2 alphabetically)
 function shouldInclude(carat1, shape1, carat2, shape2) {
   if (carat1 < carat2) return true;
@@ -20,12 +30,12 @@ function shouldInclude(carat1, shape1, carat2, shape2) {
 popularCarats.forEach(c1 => {
   popularCarats.forEach(c2 => {
     if (shouldInclude(c1, 'round', c2, 'round')) {
-      urls.push({ url: `${baseUrl}/?carat1=${c1}&shape1=round&carat2=${c2}&shape2=round`, priority: 0.9 });
+      urls.push({ url: `${baseUrl}/compare/${generateSlug(c1, 'round', c2, 'round')}`, priority: 0.9 });
     }
   });
   shapes.forEach(shape => {
     if (shape !== 'round') {
-      urls.push({ url: `${baseUrl}/?carat1=${c1}&shape1=round&carat2=${c1}&shape2=${shape}`, priority: 0.9 });
+      urls.push({ url: `${baseUrl}/compare/${generateSlug(c1, 'round', c1, shape)}`, priority: 0.9 });
     }
   });
 });
@@ -35,7 +45,7 @@ popularCarats.forEach(c1 => {
   shapes.forEach(s1 => {
     shapes.forEach(s2 => {
       if (shouldInclude(c1, s1, c1, s2)) {
-        urls.push({ url: `${baseUrl}/?carat1=${c1}&shape1=${s1}&carat2=${c1}&shape2=${s2}`, priority: 0.8 });
+        urls.push({ url: `${baseUrl}/compare/${generateSlug(c1, s1, c1, s2)}`, priority: 0.8 });
       }
     });
   });
@@ -48,7 +58,7 @@ popularCarats.forEach((c1, i) => {
     shapes.forEach(s1 => {
       shapes.forEach(s2 => {
         if (s1 !== s2) {
-          urls.push({ url: `${baseUrl}/?carat1=${c1}&shape1=${s1}&carat2=${c2}&shape2=${s2}`, priority: 0.8 });
+          urls.push({ url: `${baseUrl}/compare/${generateSlug(c1, s1, c2, s2)}`, priority: 0.8 });
         }
       });
     });
@@ -61,7 +71,7 @@ popularCaratsForElongated.forEach(c => {
   elongatedShapes.forEach(s1 => {
     elongatedShapes.forEach(s2 => {
       if (shouldInclude(c, s1, c, s2)) {
-        urls.push({ url: `${baseUrl}/?carat1=${c}&shape1=${s1}&carat2=${c}&shape2=${s2}`, priority: 0.7 });
+        urls.push({ url: `${baseUrl}/compare/${generateSlug(c, s1, c, s2)}`, priority: 0.7 });
       }
     });
   });
@@ -73,7 +83,7 @@ milestoneCarats.forEach(c1 => {
     shapes.forEach(s1 => {
       shapes.forEach(s2 => {
         if (shouldInclude(c1, s1, c2, s2) && !(c1 === c2 && s1 === s2)) {
-          urls.push({ url: `${baseUrl}/?carat1=${c1}&shape1=${s1}&carat2=${c2}&shape2=${s2}`, priority: 0.7 });
+          urls.push({ url: `${baseUrl}/compare/${generateSlug(c1, s1, c2, s2)}`, priority: 0.7 });
         }
       });
     });
@@ -85,17 +95,25 @@ const uniqueUrls = Array.from(new Set(urls.map(u => u.url))).map(url => {
   return urls.find(u => u.url === url);
 });
 
-// Limit to 1200 URLs (take highest priority first)
+// Limit to 1200 comparison URLs (take highest priority first)
 const finalUrls = uniqueUrls
   .sort((a, b) => b.priority - a.priority)
   .slice(0, 1200);
 
-// Generate sitemap.xml (escape & as &amp; for valid XML)
-const escapeXml = (url) => url.replace(/&/g, '&amp;');
+// Add shape hub pages (10 pages, priority 0.85)
+shapes.forEach(shape => {
+  finalUrls.push({ url: `${baseUrl}/${shape}`, priority: 0.85 });
+});
 
+// Add carat hub pages (16 pages, priority 0.85)
+carats.forEach(carat => {
+  finalUrls.push({ url: `${baseUrl}/carat/${formatCarat(carat)}`, priority: 0.85 });
+});
+
+// Generate sitemap.xml (no need to escape - clean URLs have no special chars)
 const sitemapUrls = finalUrls.map(({ url, priority }) =>
   `  <url>
-    <loc>${escapeXml(url)}</loc>
+    <loc>${url}</loc>
     <priority>${priority}</priority>
     <changefreq>monthly</changefreq>
   </url>`
@@ -114,6 +132,7 @@ ${sitemapUrls}
 fs.writeFileSync('public/sitemap.xml', sitemap);
 console.log(`✓ Generated sitemap.xml with ${finalUrls.length + 1} URLs`);
 console.log(`  - Homepage: 1`);
-console.log(`  - Tier 1 (Priority 0.9): ${finalUrls.filter(u => u.priority === 0.9).length}`);
-console.log(`  - Tier 2 (Priority 0.8): ${finalUrls.filter(u => u.priority === 0.8).length}`);
-console.log(`  - Tier 3/4 (Priority 0.7): ${finalUrls.filter(u => u.priority === 0.7).length}`);
+console.log(`  - Comparison Pages (Tier 1, Priority 0.9): ${finalUrls.filter(u => u.priority === 0.9).length}`);
+console.log(`  - Hub Pages (Shape + Carat, Priority 0.85): ${finalUrls.filter(u => u.priority === 0.85).length}`);
+console.log(`  - Comparison Pages (Tier 2, Priority 0.8): ${finalUrls.filter(u => u.priority === 0.8).length}`);
+console.log(`  - Comparison Pages (Tier 3/4, Priority 0.7): ${finalUrls.filter(u => u.priority === 0.7).length}`);
