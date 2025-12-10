@@ -5,14 +5,21 @@ All notable changes to the Carat Compare project are documented in this file.
 ## [1.3.2] - 2024-12-10
 
 ### Fixed
-- **Google Search Console Sitemap Error**: Added `metadataBase` to root layout
-  - Ensures all canonical tags consistently use `https://caratcompare.co`
-  - Fixes Google Search Console validation errors for sitemap URLs
-  - Per Next.js App Router best practices for SEO
+- **Google Search Console Sitemap Error**: Fixed critical XML validation error
+  - **Removed `<script/>` tag injection** in sitemap XML
+  - Replaced Next.js automatic sitemap generation with custom route handler
+  - Added `metadataBase` to root layout for consistent canonical URLs
+  - Ensures all canonical tags use `https://caratcompare.co`
+  - Sitemap now validates correctly in Google Search Console
 
 ### Technical
+- Created custom `app/sitemap.xml/route.ts` route handler
+  - Generates pure XML without any HTML/script tag injection
+  - Bypasses Next.js automatic sitemap generation issues
+- Removed `app/sitemap.ts` (was causing script tag injection)
 - Added `metadataBase: new URL('https://caratcompare.co')` to `app/layout.tsx`
 - All 1,232 pages now generate with correct canonical URLs
+- Sitemap XML is now 100% valid per XML schema standards
 
 ## [1.3.1] - 2024-12-09
 
