@@ -2,6 +2,18 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.3.2] - 2024-12-10
+
+### Fixed
+- **Google Search Console Sitemap Error**: Added `metadataBase` to root layout
+  - Ensures all canonical tags consistently use `https://caratcompare.co`
+  - Fixes Google Search Console validation errors for sitemap URLs
+  - Per Next.js App Router best practices for SEO
+
+### Technical
+- Added `metadataBase: new URL('https://caratcompare.co')` to `app/layout.tsx`
+- All 1,232 pages now generate with correct canonical URLs
+
 ## [1.3.1] - 2024-12-09
 
 ### Fixed
