@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://caratcompare.co/sitemap.xml',
+    sitemap: 'https://www.caratcompare.co/sitemap.xml',
   };
 }

@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: title,
       description: description,
       type: 'article',
-      url: `https://caratcompare.co/compare/${params.slug}`,
+      url: `https://www.caratcompare.co/compare/${params.slug}`,
       siteName: 'Carat Compare',
     },
     twitter: {
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: description,
     },
     alternates: {
-      canonical: `https://caratcompare.co/compare/${params.slug}`,
+      canonical: `https://www.caratcompare.co/compare/${params.slug}`,
     },
   };
 }

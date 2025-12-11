@@ -17,6 +17,8 @@ All notable changes to the Carat Compare project are documented in this file.
 - No redirects between sitemap URLs and content URLs
 - Canonical tags and Open Graph URLs aligned with actual site URL
 - Follows Google Search Console best practices for sitemap/canonical consistency
+- Updated all metadata generation functions across shape, compare, and carat pages
+- Updated robots.txt sitemap reference to use www subdomain
 
 ## [1.3.2] - 2024-12-10
 

@@ -50,10 +50,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: title,
       description: description,
       type: 'website',
-      url: `https://caratcompare.co/carat/${params.carat}`,
+      url: `https://www.caratcompare.co/carat/${params.carat}`,
     },
     alternates: {
-      canonical: `https://caratcompare.co/carat/${params.carat}`,
+      canonical: `https://www.caratcompare.co/carat/${params.carat}`,
     },
   };
 }
