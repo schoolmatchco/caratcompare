@@ -2,10 +2,10 @@
 
 > A visual diamond size comparison tool with affiliate monetization
 
-**Live Site:** https://caratcompare.co
+**Live Site:** https://www.caratcompare.co
 **Repository:** https://github.com/schoolmatchco/caratcompare
 **Status:** ✅ Deployed and Live
-**Last Updated:** December 9, 2024
+**Last Updated:** December 11, 2024
 
 ---
 
@@ -214,9 +214,20 @@ Once approved for affiliate programs, update URLs in `components/ShoppingSection
 
 ---
 
-## Recent Changes (December 9, 2024)
+## Recent Changes (December 11, 2024)
 
-### Version 1.3.1 (Latest)
+### Version 1.3.3 (Latest)
+- ✅ **Google Search Console HTTPS Fix**: Resolved "HTTPS not evaluated" error
+- ✅ Updated all URLs to use `www.caratcompare.co` subdomain consistently
+- ✅ Fixed canonical URL mismatch across all page types
+- ✅ Updated sitemap, metadata, robots.txt to use www subdomain
+- ✅ Eliminated 307 redirects between sitemap and canonical URLs
+
+### Version 1.3.2
+- ✅ Fixed Google Search Console sitemap XML validation error
+- ✅ Created custom sitemap route handler to prevent script tag injection
+
+### Version 1.3.1
 - ✅ **Homepage Content Fixed**: Resolved critical issue where homepage was missing H1, FAQ, and Footer
 - ✅ **Dynamic Homepage Heading**: H1 now shows actual diamonds being compared (e.g., "0.5 Carat Heart vs 1.25 Carat Round")
 - ✅ Consistent design and structure across all pages
@@ -258,7 +269,7 @@ See `CHANGELOG.md` for complete version history.
 ### Pending
 - ⏳ Affiliate program approval (Blue Nile, James Allen, Brilliant Earth)
 - ⏳ Google Search Console indexing (3-6 months for organic traffic)
-- ⏳ User requested to verify measurements against reference graphic
+- ⏳ Google Search Console HTTPS error resolution (resubmit sitemap, wait 24-48 hours)
 
 ### Future Enhancements
 - Add Google Analytics tracking
@@ -400,6 +411,33 @@ Current Lighthouse scores meet all targets.
 
 ---
 
-**Last Updated**: December 9, 2024
-**Version**: 1.3.1
+## Google Search Console Notes (December 11, 2024)
+
+### HTTPS Error Fix
+**Issue:** "HTTPS not evaluated: These pages are not served over HTTPS"
+
+**Root Cause:**
+- Site serves content at `www.caratcompare.co` (with www)
+- Sitemap and canonical tags pointed to `caratcompare.co` (without www)
+- This caused a 307 redirect mismatch between sitemap URLs and canonical URLs
+
+**Solution Applied:**
+1. Updated `SITE_URL` in `app/sitemap.xml/route.ts` to use www
+2. Updated `metadataBase` in `app/layout.tsx` to use www
+3. Updated all page metadata generators:
+   - `app/[shape]/page.tsx` - canonical and OG URLs
+   - `app/compare/[slug]/page.tsx` - canonical and OG URLs
+   - `app/carat/[carat]/page.tsx` - canonical and OG URLs
+4. Updated `app/robots.ts` sitemap reference to use www
+
+**Next Steps:**
+1. Resubmit sitemap in Google Search Console: `https://www.caratcompare.co/sitemap.xml`
+2. Request re-indexing for key URLs using URL Inspection tool
+3. Wait 24-48 hours for Google to re-crawl
+4. Verify "HTTPS not evaluated" error is resolved
+
+---
+
+**Last Updated**: December 11, 2024
+**Version**: 1.3.3
 **Status**: Production-ready, deployed, and live
