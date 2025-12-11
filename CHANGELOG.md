@@ -2,6 +2,22 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.3.3] - 2024-12-11
+
+### Fixed
+- **Google Search Console HTTPS Error**: Fixed "HTTPS not evaluated" error
+  - Updated `SITE_URL` in sitemap route to use `https://www.caratcompare.co` (with www)
+  - Updated `metadataBase` in layout.tsx to use `https://www.caratcompare.co` (with www)
+  - Resolves canonical URL mismatch between sitemap and actual served URLs
+  - All sitemap URLs, canonical tags, and OG tags now consistently use www subdomain
+  - Eliminates 307 redirect between sitemap URLs and canonical URLs
+
+### Technical
+- Sitemap URLs now match the canonical domain exactly (www.caratcompare.co)
+- No redirects between sitemap URLs and content URLs
+- Canonical tags and Open Graph URLs aligned with actual site URL
+- Follows Google Search Console best practices for sitemap/canonical consistency
+
 ## [1.3.2] - 2024-12-10
 
 ### Fixed

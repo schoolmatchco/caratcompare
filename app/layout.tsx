@@ -3,7 +3,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://caratcompare.co'),
+  metadataBase: new URL('https://www.caratcompare.co'),
   title: 'Carat Compare | Diamond Size Comparison Tool',
   description: 'Visually compare diamond sizes and shapes. See actual size comparisons with measurements. Shop from Blue Nile, James Allen, and Brilliant Earth.',
 }

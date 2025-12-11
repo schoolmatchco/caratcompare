@@ -1,7 +1,7 @@
 import { generateAllComparisonSlugs } from '@/lib/generateStaticParams';
 import { VALID_SHAPES, VALID_CARATS } from '@/lib/urlHelpers';
 
-const SITE_URL = 'https://caratcompare.co';
+const SITE_URL = 'https://www.caratcompare.co';
 
 export async function GET() {
   const currentDate = new Date().toISOString();

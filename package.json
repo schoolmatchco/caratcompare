@@ -1,6 +1,6 @@
 {
   "name": "carat-compare",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Visual diamond size comparison tool with affiliate monetization",
   "scripts": {
     "dev": "next dev",
