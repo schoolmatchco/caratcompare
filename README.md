@@ -5,7 +5,8 @@
 **Live Site:** https://www.caratcompare.co
 **Repository:** https://github.com/schoolmatchco/caratcompare
 **Status:** ✅ Deployed and Live
-**Last Updated:** December 11, 2024
+**Version:** 1.3.4
+**Last Updated:** December 17, 2024
 
 ---
 
@@ -205,16 +206,28 @@ Each URL has dynamic:
 Affiliate buttons currently link to general diamond search pages (no tracking codes) while awaiting affiliate program approval.
 
 ### Retailers
-1. **Blue Nile**: https://www.bluenile.com/diamond-search
-2. **James Allen**: https://www.jamesallen.com/loose-diamonds/all-diamonds/
-3. **Brilliant Earth**: https://www.brilliantearth.com/engagement-rings/start-with-a-diamond/
+1. **Blue Nile**: Approved (3.5% commission) - Full affiliate integration
+2. **James Allen**: Approved (2% commission) - Full affiliate integration
+3. **Brilliant Earth**: Approved - Placeholder homepage link (pending Impact.com setup)
 
 ### Future Integration
 Once approved for affiliate programs, update URLs in `components/ShoppingSection.tsx` with proper tracking parameters.
 
 ---
 
-## Recent Changes (December 11, 2024)
+## Recent Changes (December 17, 2024)
+
+### Version 1.3.4 (Latest)
+- ✅ **Brilliant Earth Added**: Third affiliate retailer option in shopping sections
+- ✅ **Performance Optimization**: Change modal now opens/closes smoothly without lag
+  - Removed SVG cache busting (Date.now())
+  - Removed GPU-intensive backdrop blur
+  - Simplified animations (spring → tween)
+  - Replaced Framer Motion with CSS transitions
+  - Result: 60fps smooth performance on mobile
+- ✅ **Pinterest Verification**: Added domain verification meta tag
+
+### Version 1.3.3 (December 11, 2024)
 
 ### Version 1.3.3 (Latest)
 - ✅ **Google Search Console HTTPS Fix**: Resolved "HTTPS not evaluated" error
@@ -438,6 +451,6 @@ Current Lighthouse scores meet all targets.
 
 ---
 
-**Last Updated**: December 11, 2024
-**Version**: 1.3.3
-**Status**: Production-ready, deployed, and live
+**Last Updated**: December 17, 2024
+**Version**: 1.3.4
+**Status**: Production-ready, deployed, and live with optimized performance
