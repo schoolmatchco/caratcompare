@@ -24,13 +24,16 @@ const shapeMapping: Record<string, string> = {
 }
 
 // Build deep links with shape and carat filtering
-const buildRetailerUrl = (retailer: 'bluenile' | 'jamesallen', carat: number, shape: string): string => {
+const buildRetailerUrl = (retailer: 'bluenile' | 'jamesallen' | 'brilliantearth', carat: number, shape: string): string => {
   const shapeName = shapeMapping[shape.toLowerCase()] || 'round-cut'
 
   if (retailer === 'bluenile') {
     return `https://www.bluenile.com/diamond-search?CaratFrom=${carat}&CaratTo=${carat}&Shape=${shapeName}&a_aid=6938679a08145&a_cid=55e51e63`
-  } else {
+  } else if (retailer === 'jamesallen') {
     return `https://www.jamesallen.com/loose-diamonds/all-diamonds/?Shape=${shapeName}&CaratFrom=${carat}&CaratTo=${carat}&a_aid=6938679a08145&a_cid=dfef9309`
+  } else {
+    // Brilliant Earth - placeholder homepage link (update with affiliate params later)
+    return `https://www.brilliantearth.com`
   }
 }
 
@@ -50,6 +53,11 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
       name: 'James Allen',
       logo: '/svg/retailers/james-allen.svg',
       url: buildRetailerUrl('jamesallen', carat, shape)
+    },
+    {
+      name: 'Brilliant Earth',
+      logo: '/svg/retailers/brilliant-earth.svg',
+      url: buildRetailerUrl('brilliantearth', carat, shape)
     },
   ]
 
