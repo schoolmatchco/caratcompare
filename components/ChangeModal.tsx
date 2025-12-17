@@ -38,7 +38,7 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
 
   const getShapeIcon = (shape: string) => {
     const shapeName = shape.charAt(0).toUpperCase() + shape.slice(1)
-    return `/svg/diamonds/${shapeName}.svg?v=${Date.now()}`
+    return `/svg/diamonds/${shapeName}.svg`
   }
 
   const caratToSliderValue = (carat: number) => caratOptions.indexOf(carat)
@@ -51,14 +51,15 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
 
   return (
     <AnimatePresence>
-      {/* Backdrop with blur */}
+      {/* Backdrop - no blur for better performance */}
       <motion.div
         key="backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
         onClick={onClose}
-        className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-40"
+        className="fixed inset-0 bg-black bg-opacity-70 z-40"
       />
 
       {/* Modal - Always bottom sheet */}
@@ -67,7 +68,7 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
         initial={{ y: '100%' }}
         animate={{ y: 0 }}
         exit={{ y: '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 500 }}
+        transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
         className="fixed bottom-0 left-0 right-0 rounded-t-3xl z-50 max-w-4xl mx-auto border-t-2 border-l-2 border-r-2 border-black"
         style={{ maxHeight: '85vh', backgroundColor: '#252525' }}
       >
@@ -89,19 +90,14 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
           <div className="grid grid-cols-2 gap-6 mb-6 pt-2">
             {/* Diamond 1 Preview */}
             <div className="flex flex-col items-center">
-              <motion.div
-                key={`preview-1-${selectedShape1}`}
-                initial={{ scale: 0.9, opacity: 0.8 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                className="w-20 h-20 flex items-center justify-center mb-2"
-              >
+              <div className="w-20 h-20 flex items-center justify-center mb-2">
                 <img
+                  key={`preview-1-${selectedShape1}`}
                   src={getShapeIcon(selectedShape1)}
                   alt={selectedShape1}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full object-contain transition-opacity duration-200"
                 />
-              </motion.div>
+              </div>
               <p className="text-lg font-bold" style={{ color: '#07F4FF' }}>
                 {formatCarat(selectedCarat1)} {selectedShape1.toUpperCase()}
               </p>
@@ -109,19 +105,14 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
 
             {/* Diamond 2 Preview */}
             <div className="flex flex-col items-center">
-              <motion.div
-                key={`preview-2-${selectedShape2}`}
-                initial={{ scale: 0.9, opacity: 0.8 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                className="w-20 h-20 flex items-center justify-center mb-2"
-              >
+              <div className="w-20 h-20 flex items-center justify-center mb-2">
                 <img
+                  key={`preview-2-${selectedShape2}`}
                   src={getShapeIcon(selectedShape2)}
                   alt={selectedShape2}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full object-contain transition-opacity duration-200"
                 />
-              </motion.div>
+              </div>
               <p className="text-lg font-bold" style={{ color: '#FA06FF' }}>
                 {formatCarat(selectedCarat2)} {selectedShape2.toUpperCase()}
               </p>
@@ -157,10 +148,10 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
                     <button
                       key={shape}
                       onClick={() => setSelectedShape1(shape)}
-                      className={`p-1 rounded transition-all ${
+                      className={`p-1 rounded transition-colors ${
                         selectedShape1 === shape
-                          ? 'border-2 scale-110'
-                          : ''
+                          ? 'border-2'
+                          : 'border-2 border-transparent'
                       }`}
                       style={selectedShape1 === shape ? { borderColor: '#07F4FF' } : {}}
                     >
@@ -202,10 +193,10 @@ export default function ChangeModal({ carat1, shape1, carat2, shape2, onClose, o
                     <button
                       key={shape}
                       onClick={() => setSelectedShape2(shape)}
-                      className={`p-1 rounded transition-all ${
+                      className={`p-1 rounded transition-colors ${
                         selectedShape2 === shape
-                          ? 'border-2 scale-110'
-                          : ''
+                          ? 'border-2'
+                          : 'border-2 border-transparent'
                       }`}
                       style={selectedShape2 === shape ? { borderColor: '#FA06FF' } : {}}
                     >

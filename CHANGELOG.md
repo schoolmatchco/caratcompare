@@ -2,6 +2,31 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.3.4] - 2024-12-17
+
+### Added
+- **Brilliant Earth Retailer**: Added Brilliant Earth as third affiliate option
+  - New button appears in shopping sections on all comparison pages
+  - Currently links to homepage (placeholder for affiliate link)
+  - Logo displays correctly alongside Blue Nile and James Allen
+  - Ready for affiliate tracking parameters once obtained from Impact.com
+
+### Fixed
+- **Change Modal Performance**: Major optimization for smoother user experience
+  - Removed `Date.now()` cache busting that was forcing SVG reloads on every render
+  - Removed GPU-intensive `backdrop-blur-sm` effect (now solid backdrop)
+  - Changed spring animation to simple tween for faster, smoother modal slide
+  - Replaced Framer Motion animations on preview diamonds with lightweight CSS transitions
+  - Removed `scale-110` transforms on shape buttons (now color-only transitions)
+  - **Result**: Modal now opens/closes smoothly without glitching or lag
+
+### Technical
+- Optimized `getShapeIcon()` function to return clean SVG paths
+- Changed backdrop from `backdrop-blur-sm` to `bg-opacity-70` (solid)
+- Changed modal transition from `spring (damping: 25, stiffness: 500)` to `tween (duration: 0.3, ease: 'easeOut')`
+- Replaced motion.div wrappers with standard divs + CSS transitions on preview images
+- Changed shape button transitions from `transition-all` to `transition-colors`
+
 ## [1.3.3] - 2024-12-11
 
 ### Fixed
