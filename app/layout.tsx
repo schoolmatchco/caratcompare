@@ -16,9 +16,19 @@ export const metadata: Metadata = {
     apple: [
       { url: '/favicon.ico', sizes: '180x180', type: 'image/x-icon' },
     ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/favicon.ico',
+        color: '#000000',
+      },
+    ],
   },
+  manifest: '/site.webmanifest',
   other: {
     'p:domain_verify': 'feb1e0f6599aedc42650e268e1ec6626',
+    'msapplication-TileColor': '#000000',
+    'msapplication-config': '/browserconfig.xml',
   },
 }
 
