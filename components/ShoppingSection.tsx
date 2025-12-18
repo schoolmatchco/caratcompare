@@ -88,8 +88,14 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
         {/* Heading - Left aligned with buttons */}
         <div className="flex items-center gap-2 mb-6 px-2 md:px-0">
           <img src="/svg/gift.svg" alt="Gift" className="w-7 h-7" style={{ filter: 'brightness(0) saturate(100%) invert(13%) sepia(8%) saturate(1000%) hue-rotate(180deg)' }} />
-          <h2 className="text-xl font-bold text-gray-800" style={{ marginTop: '5px' }}>
+          <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2" style={{ marginTop: '5px' }}>
             Find the Perfect <span className="px-2 py-1 rounded" style={{ backgroundColor: highlightColor }}>{carat} Carat {shapeName}</span> Diamond
+            <img
+              src={`/svg/diamonds/${shapeName}.svg`}
+              alt={shapeName}
+              className="w-6 h-6 inline-block"
+              style={{ filter: 'brightness(0) saturate(100%) invert(13%) sepia(8%) saturate(1000%) hue-rotate(180deg)' }}
+            />
           </h2>
         </div>
 
@@ -111,7 +117,7 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
                 onClick={() => trackAffiliateClick(retailer.name, carat, shape, 'logo')}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`inline-flex items-center bg-gray-800 text-white px-4 py-2.5 md:px-4 md:py-3 rounded-lg hover:bg-gray-700 transition-colors border-2 ${borderColor}`}
+                className={`inline-flex items-center bg-gray-800 text-white px-4 py-2.5 md:px-4 md:py-3 rounded-lg hover:bg-gray-700 transition-colors border ${borderColor}`}
               >
                 <img
                   src={retailer.logo}
