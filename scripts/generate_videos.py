@@ -9,8 +9,9 @@ Requirements:
 
 import os
 import json
+import numpy as np
 from pathlib import Path
-from moviepy.editor import *
+from moviepy import VideoClip, CompositeVideoClip
 from PIL import Image, ImageDraw, ImageFont
 import cairosvg
 from io import BytesIO
