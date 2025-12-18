@@ -5,7 +5,7 @@
 **Live Site:** https://www.caratcompare.co
 **Repository:** https://github.com/schoolmatchco/caratcompare
 **Status:** ✅ Deployed and Live
-**Version:** 1.3.4
+**Version:** 1.3.5 (Critical SEO Hotfix)
 **Last Updated:** December 17, 2024
 
 ---
@@ -217,7 +217,13 @@ Once approved for affiliate programs, update URLs in `components/ShoppingSection
 
 ## Recent Changes (December 17, 2024)
 
-### Version 1.3.4 (Latest)
+### Version 1.3.5 (CRITICAL HOTFIX - Latest)
+- 🚨 **Critical SEO Fix**: Fixed broken canonical URLs (all pages had `/undefined`)
+- ✅ **Google Search Console**: Resolved 945 pages with canonical/duplicate errors
+- ✅ **Root Cause**: Next.js 15+ params Promise not awaited in metadata
+- ✅ **Impact**: Zero user-facing changes, SEO recovery in progress
+
+### Version 1.3.4
 - ✅ **Brilliant Earth Added**: Third affiliate retailer option in shopping sections
 - ✅ **Performance Optimization**: Change modal now opens/closes smoothly without lag
   - Removed SVG cache busting (Date.now())

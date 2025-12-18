@@ -2,6 +2,29 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.3.5] - 2024-12-17 (CRITICAL HOTFIX)
+
+### Fixed
+- **CRITICAL: Canonical URL Bug**: Fixed broken canonical URLs across all 1,227 pages
+  - **Issue**: All canonical tags were pointing to `/undefined` instead of actual page URLs
+  - **Impact**: 945 pages flagged in Google Search Console with canonical/duplicate errors
+    - 558 pages: "Alternate page with proper canonical tag"
+    - 387 pages: "Duplicate without user-selected canonical"
+  - **Root Cause**: Next.js 15+ change - `params` are now Promises and must be awaited
+  - **Fix**: Changed `params.slug` to `resolvedParams.slug` in metadata generation
+  - **Files Fixed**:
+    - `app/compare/[slug]/page.tsx` (lines 54, 63)
+    - `app/carat/[carat]/page.tsx` (lines 53, 56)
+  - **Result**: All canonical URLs now point correctly to actual page URLs
+  - **SEO Recovery**: Expected 3-7 days for Google to recrawl and clear errors
+
+### Technical
+- Fixed undefined canonical URLs caused by using Promise object before awaiting
+- Before: `canonical: https://www.caratcompare.co/compare/undefined`
+- After: `canonical: https://www.caratcompare.co/compare/1-round-vs-2-round`
+- Static regeneration of all pages deployed to production
+- See `CANONICAL_URL_FIX_DEC_17.md` for complete technical documentation
+
 ## [1.3.4] - 2024-12-17
 
 ### Added
