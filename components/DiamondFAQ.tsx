@@ -119,21 +119,18 @@ export default function DiamondFAQ() {
 
   return (
     <div className="w-full bg-main-gray py-16 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-white text-2xl font-black mb-8 text-center">Diamond FAQ</h2>
+      <div className="max-w-3xl mx-auto">
+        {/* Heading with Diamond Image */}
+        <div className="flex items-center justify-center gap-4 mb-8">
+          <img
+            src="/diamond-faq.png"
+            alt="Diamond"
+            className="w-12 h-12 object-contain"
+          />
+          <h2 className="text-white text-2xl font-black">Diamond FAQ</h2>
+        </div>
 
-        <div className="flex gap-8 items-start">
-          {/* Diamond Image - Left Side */}
-          <div className="hidden md:block flex-shrink-0">
-            <img
-              src="/diamond-faq.png"
-              alt="Diamond"
-              className="w-48 h-auto object-contain sticky top-8"
-            />
-          </div>
-
-          {/* FAQ Content - Right Side */}
-          <div className="flex-1 space-y-4">
+        <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index
             return (
@@ -179,7 +176,6 @@ export default function DiamondFAQ() {
               </div>
             )
           })}
-          </div>
         </div>
       </div>
     </div>
