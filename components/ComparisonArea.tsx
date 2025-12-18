@@ -71,6 +71,18 @@ export default function ComparisonArea({
 
   return (
     <div className="w-full bg-main-gray min-h-screen">
+      {/* Main heading - updates dynamically */}
+      <div className="text-center pt-8 pb-4 px-4">
+        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+          <span className="text-cyan">{carat1 % 1 === 0 || carat1 % 1 === 0.5 ? carat1.toFixed(1) : carat1.toFixed(2)} Carat {shape1.charAt(0).toUpperCase() + shape1.slice(1)}</span>
+          <span className="font-thin mx-3">vs</span>
+          <span className="text-magenta">{carat2 % 1 === 0 || carat2 % 1 === 0.5 ? carat2.toFixed(1) : carat2.toFixed(2)} Carat {shape2.charAt(0).toUpperCase() + shape2.slice(1)}</span>
+        </h1>
+        <p className="text-white text-lg md:text-xl mt-4 md:mt-2 font-light">
+          DIAMOND SIZE & SHAPE COMPARISON TOOL
+        </p>
+      </div>
+
       {/* Comparison Area - 3 Columns */}
       <div className="max-w-4xl mx-auto px-4 pb-12">
         <div className="grid grid-cols-3 gap-2">

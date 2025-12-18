@@ -103,19 +103,7 @@ export default async function ComparisonPage({ params }: Props) {
       />
       <Header />
 
-      {/* Main heading for SEO */}
-      <div className="text-center pt-8 pb-4 px-4">
-        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-          <span className="text-cyan">{formatCaratForDisplay(carat1)} Carat {capitalize(shape1)}</span>
-          <span className="font-thin mx-3">vs</span>
-          <span className="text-magenta">{formatCaratForDisplay(carat2)} Carat {capitalize(shape2)}</span>
-        </h1>
-        <p className="text-white text-lg md:text-xl mt-4 md:mt-2 font-light">
-          DIAMOND SIZE & SHAPE COMPARISON TOOL
-        </p>
-      </div>
-
-      {/* Existing visual comparison tool */}
+      {/* Visual comparison tool with dynamic heading */}
       <ComparisonArea
         initialCarat1={carat1}
         initialShape1={shape1}
