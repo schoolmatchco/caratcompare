@@ -23,6 +23,20 @@ const shapeMapping: Record<string, string> = {
   'marquise': 'marquise-cut',
 }
 
+// Brilliant Earth affiliate URLs by shape (shape-level deep linking only)
+const brilliantEarthUrls: Record<string, string> = {
+  round: 'https://brilliantearth.sjv.io/MAZ2YN',
+  oval: 'https://brilliantearth.sjv.io/kO59Pv',
+  cushion: 'https://brilliantearth.sjv.io/xLBrq3',
+  pear: 'https://brilliantearth.sjv.io/POoRqM',
+  princess: 'https://brilliantearth.sjv.io/e1Dex6',
+  emerald: 'https://brilliantearth.sjv.io/GKaOY6',
+  marquise: 'https://brilliantearth.sjv.io/VxnAjJ',
+  radiant: 'https://brilliantearth.sjv.io/Z62Le0',
+  asscher: 'https://brilliantearth.sjv.io/o4A5ge',
+  heart: 'https://brilliantearth.sjv.io/BnjOV0',
+}
+
 // Build deep links with shape and carat filtering
 const buildRetailerUrl = (retailer: 'bluenile' | 'jamesallen' | 'brilliantearth', carat: number, shape: string): string => {
   const shapeName = shapeMapping[shape.toLowerCase()] || 'round-cut'
@@ -32,8 +46,8 @@ const buildRetailerUrl = (retailer: 'bluenile' | 'jamesallen' | 'brilliantearth'
   } else if (retailer === 'jamesallen') {
     return `https://www.jamesallen.com/loose-diamonds/all-diamonds/?Shape=${shapeName}&CaratFrom=${carat}&CaratTo=${carat}&a_aid=6938679a08145&a_cid=dfef9309`
   } else {
-    // Brilliant Earth - placeholder homepage link (update with affiliate params later)
-    return `https://www.brilliantearth.com`
+    // Brilliant Earth - shape-level affiliate links only (no carat deep linking)
+    return brilliantEarthUrls[shape.toLowerCase()] || brilliantEarthUrls.round
   }
 }
 
