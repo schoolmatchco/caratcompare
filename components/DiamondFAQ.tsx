@@ -129,7 +129,7 @@ export default function DiamondFAQ() {
               <div
                 key={index}
                 className={`rounded-lg transition-colors ${isOpen ? '' : 'border border-gray-600'}`}
-                style={isOpen ? { backgroundColor: '#CCCCCC' } : { backgroundColor: '#2A2A2A' }}
+                style={isOpen ? { backgroundColor: '#FFFFFF' } : { backgroundColor: '#2E2E2E' }}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
