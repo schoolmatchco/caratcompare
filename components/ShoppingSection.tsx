@@ -88,7 +88,7 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
         <div className="flex items-center justify-center gap-2 mb-6">
           <img src="/svg/gift.svg" alt="Gift" className="w-7 h-7" style={{ filter: 'brightness(0) saturate(100%) invert(13%) sepia(8%) saturate(1000%) hue-rotate(180deg)' }} />
           <h2 className="text-xl font-bold text-gray-800" style={{ marginTop: '5px' }}>
-            Shop <span className="px-2 py-1 rounded" style={{ backgroundColor: highlightColor }}>{carat} Carat {shapeName}</span>
+            Find the Perfect <span className="px-2 py-1 rounded" style={{ backgroundColor: highlightColor }}>{carat} Carat {shapeName}</span> Diamond
           </h2>
         </div>
 
