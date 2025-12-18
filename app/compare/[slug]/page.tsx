@@ -110,7 +110,7 @@ export default async function ComparisonPage({ params }: Props) {
           <span className="font-thin mx-3">vs</span>
           <span className="text-magenta">{formatCaratForDisplay(carat2)} Carat {capitalize(shape2)}</span>
         </h1>
-        <p className="text-white text-lg md:text-xl mt-2 font-light">
+        <p className="text-white text-lg md:text-xl mt-4 md:mt-2 font-light">
           DIAMOND SIZE & SHAPE COMPARISON TOOL
         </p>
       </div>
