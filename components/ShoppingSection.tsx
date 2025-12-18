@@ -94,7 +94,6 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
               src={`/svg/diamonds/${shapeName}.svg`}
               alt={shapeName}
               className="w-6 h-6 inline-block"
-              style={{ filter: 'brightness(0) saturate(100%) invert(13%) sepia(8%) saturate(1000%) hue-rotate(180deg)' }}
             />
           </h2>
         </div>
