@@ -2,6 +2,36 @@
 
 All notable changes to the Carat Compare project are documented in this file.
 
+## [1.3.6] - 2024-12-17
+
+### Added
+- **Favicon Optimization**: Proper favicon metadata for Google search results
+  - Added multiple icon sizes (16x16, 32x32, 48x48) for Google compatibility
+  - Added Apple touch icon (180x180) for iOS devices
+  - Google prefers multiples of 48px for search result favicons
+
+- **Structured Data for AI Search**: Comprehensive Schema.org JSON-LD markup
+  - **WebsiteSchema**: Helps AI understand site purpose and search functionality
+  - **OrganizationSchema**: Establishes credibility and trust with AI engines
+  - **ComparisonSchema**: Article markup on all 1,227 comparison pages
+  - **FAQSchema**: Ready for FAQ pages (future enhancement)
+  - Enables visibility in ChatGPT, Perplexity, Bing Chat, Google SGE
+  - AI search engines can now extract and cite diamond comparison data
+
+### Technical
+- Created `components/StructuredData.tsx` with reusable schema components
+- Added structured data to `app/layout.tsx` (site-wide schemas)
+- Added ComparisonSchema to all comparison pages
+- All schemas validate with Google Rich Results Test
+- JSON-LD format (recommended by Google)
+
+### Benefits
+- Better Google search result appearance (favicon will show in 1-2 weeks)
+- AI search engines can understand and cite comparison content
+- Eligible for Google rich snippets
+- Improved discoverability in AI-powered searches
+- Establishes site as authoritative diamond comparison source
+
 ## [1.3.5] - 2024-12-17 (CRITICAL HOTFIX)
 
 ### Fixed

@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import ComparisonArea from '@/components/ComparisonArea';
 import DiamondFAQ from '@/components/DiamondFAQ';
 import Footer from '@/components/Footer';
+import { ComparisonSchema } from '@/components/StructuredData';
 import { parseComparisonSlug, capitalize, formatCaratForDisplay } from '@/lib/urlHelpers';
 import { generateComparisonText, generateMetaDescription } from '@/lib/comparisonTextGenerator';
 import { generateComparisonStaticParams } from '@/lib/generateStaticParams';
@@ -88,8 +89,18 @@ export default async function ComparisonPage({ params }: Props) {
   // Split text into paragraphs safely
   const paragraphs = seoText.split('\n\n').filter((p) => p && p.trim().length > 0);
 
+  // Get meta description for structured data
+  const metaDescription = generateMetaDescription(carat1, shape1, carat2, shape2);
+
   return (
     <main className="min-h-screen bg-main-gray">
+      <ComparisonSchema
+        carat1={carat1}
+        shape1={shape1}
+        carat2={carat2}
+        shape2={shape2}
+        description={metaDescription}
+      />
       <Header />
 
       {/* Main heading for SEO */}
