@@ -202,7 +202,7 @@ def generate_comparison_video(carat1, shape1, carat2, shape2, output_path):
 
         return np.array(frame)
 
-    comparison_clip = VideoClip(make_comparison_frame, duration=12).set_start(3)
+    comparison_clip = VideoClip(make_comparison_frame, duration=12).with_start(3)
     clips.append(comparison_clip)
 
     # --- OUTRO: Website (15-20s) ---
@@ -227,7 +227,7 @@ def generate_comparison_video(carat1, shape1, carat2, shape2, output_path):
 
         return np.array(frame)
 
-    outro_clip = VideoClip(make_outro_frame, duration=5).set_start(15)
+    outro_clip = VideoClip(make_outro_frame, duration=5).with_start(15)
     clips.append(outro_clip)
 
     # Composite and render
