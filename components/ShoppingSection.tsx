@@ -84,8 +84,8 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
       className={`w-full bg-shopping-gray ${paddingClass} px-4`}
     >
       <div className="max-w-2xl mx-auto">
-        {/* Heading - Centered with highlighted carat/shape, 25% bigger */}
-        <div className="flex items-center justify-center gap-2 mb-6">
+        {/* Heading - Left aligned with buttons */}
+        <div className="flex items-center gap-2 mb-6 px-2 md:px-0">
           <img src="/svg/gift.svg" alt="Gift" className="w-7 h-7" style={{ filter: 'brightness(0) saturate(100%) invert(13%) sepia(8%) saturate(1000%) hue-rotate(180deg)' }} />
           <h2 className="text-xl font-bold text-gray-800" style={{ marginTop: '5px' }}>
             Find the Perfect <span className="px-2 py-1 rounded" style={{ backgroundColor: highlightColor }}>{carat} Carat {shapeName}</span> Diamond
