@@ -114,16 +114,25 @@ def generate_comparison_video(carat1, shape1, carat2, shape2, output_path):
     width1, height1 = get_dimensions(carat1, shape1, diamond_data)
     width2, height2 = get_dimensions(carat2, shape2, diamond_data)
 
-    # Scale for visibility
-    SCALE = 15
+    # CRITICAL: Scale to show ACCURATE sizes relative to dime
+    # Dime is 17.9mm, we want it to be a good size on screen
+    # Let's make dime ~270px (about 1/4 of screen width)
+    DIME_MM = 17.9
+    DIME_PX = 270  # Target dime size in pixels
+    SCALE = DIME_PX / DIME_MM  # ~15 pixels per mm
+
+    # Now all diamonds will be correctly sized relative to dime
     diamond1_px = int(width1 * SCALE)
     diamond2_px = int(width2 * SCALE)
-    dime_px = int(17.9 * SCALE)
+    dime_px = DIME_PX
 
     # Create assets
     bg = create_background()
 
     # Create simple representations
+    # TODO: Replace with real dime photo for better look
+    # If you have a dime photo, save it as: assets/dime_photo.png
+    # Then load it here instead of creating a circle
     dime = create_circle(dime_px, '#C0C0C0')  # Silver color for dime
     diamond1 = create_circle(diamond1_px, CYAN)
     diamond2 = create_circle(diamond2_px, MAGENTA)
@@ -321,30 +330,14 @@ Disclosure: Affiliate links support this channel at no extra cost to you."""
     }
 
 def generate_pilot_videos():
-    """Generate 20 pilot videos"""
+    """Generate 3 test videos for YouTube Shorts & TikTok"""
     OUTPUT_DIR.mkdir(exist_ok=True)
 
+    # Just 3 high-value comparisons for testing
     comparisons = [
-        (0.5, 'round', 1.0, 'round'),
-        (0.75, 'round', 1.0, 'round'),
-        (1.0, 'round', 1.5, 'round'),
-        (1.0, 'round', 2.0, 'round'),
-        (1.5, 'round', 2.0, 'round'),
-        (1.0, 'round', 1.0, 'oval'),
-        (1.0, 'round', 1.0, 'princess'),
-        (1.0, 'round', 1.0, 'cushion'),
-        (1.5, 'round', 1.5, 'oval'),
-        (2.0, 'round', 2.0, 'oval'),
-        (1.0, 'oval', 1.5, 'oval'),
-        (1.0, 'oval', 2.0, 'oval'),
-        (1.0, 'cushion', 1.5, 'cushion'),
-        (1.0, 'princess', 1.5, 'princess'),
-        (0.25, 'round', 0.5, 'round'),
-        (0.5, 'round', 0.75, 'round'),
-        (2.0, 'round', 3.0, 'round'),
-        (3.0, 'round', 4.0, 'round'),
-        (1.0, 'pear', 1.5, 'pear'),
-        (1.0, 'emerald', 1.5, 'emerald'),
+        (1.0, 'round', 2.0, 'round'),    # Most searched
+        (1.0, 'round', 1.0, 'oval'),     # Shape comparison
+        (1.5, 'round', 2.0, 'round'),    # Common upgrade
     ]
 
     for i, (carat1, shape1, carat2, shape2) in enumerate(comparisons, 1):
