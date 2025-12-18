@@ -216,7 +216,11 @@ def create_text_layer(text, font_size, color=WHITE, y_position=100, bold=True):
 
 def generate_narration(carat1, shape1, carat2, shape2):
     """Generate voiceover narration using gTTS"""
-    text = f"What does a {carat1} carat {shape1} diamond look like compared to a {carat2} carat {shape2} diamond?"
+    # Add "shaped" for non-round diamonds to sound more natural
+    shape1_text = f"{shape1} shaped" if shape1.lower() != 'round' else shape1
+    shape2_text = f"{shape2} shaped" if shape2.lower() != 'round' else shape2
+
+    text = f"Let's compare the size of a {carat1} carat {shape1_text} diamond to a {carat2} carat {shape2_text} diamond."
 
     # Create temporary file for audio
     temp_audio = tempfile.NamedTemporaryFile(delete=False, suffix='.mp3')
@@ -285,16 +289,20 @@ def generate_premium_video(carat1, shape1, carat2, shape2, output_path):
             if t < 1:
                 # Opening: Question text fade in
                 alpha = int((t / 1) * 255)
+
+                shape1_text = f"{shape1} shaped" if shape1.lower() != 'round' else shape1
+                shape2_text = f"{shape2} shaped" if shape2.lower() != 'round' else shape2
+
                 question = create_text_layer(
-                    f"What does a {carat1}ct {shape1}",
-                    60, WHITE, HEIGHT//2 - 150
+                    f"Let's compare the size of",
+                    55, WHITE, HEIGHT//2 - 150
                 )
                 question2 = create_text_layer(
-                    f"look like compared to",
-                    50, WHITE, HEIGHT//2 - 50
+                    f"a {carat1}ct {shape1_text} diamond",
+                    60, WHITE, HEIGHT//2 - 50
                 )
                 question3 = create_text_layer(
-                    f"a {carat2}ct {shape2}?",
+                    f"to a {carat2}ct {shape2_text} diamond",
                     60, WHITE, HEIGHT//2 + 50
                 )
 
