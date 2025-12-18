@@ -54,6 +54,7 @@ const buildRetailerUrl = (retailer: 'bluenile' | 'jamesallen' | 'brilliantearth'
 export default function ShoppingSection({ carat, shape, position = 'top' }: ShoppingSectionProps) {
   const shapeName = shape.charAt(0).toUpperCase() + shape.slice(1)
   const highlightColor = position === 'top' ? 'rgba(7, 244, 255, 0.2)' : 'rgba(250, 6, 255, 0.1)'
+  const borderColor = position === 'top' ? 'border-cyan' : 'border-magenta'
   const paddingClass = position === 'top' ? 'pt-16 pb-8' : 'pt-8 pb-16'
 
   // Build retailer data with dynamic deep links
@@ -110,7 +111,7 @@ export default function ShoppingSection({ carat, shape, position = 'top' }: Shop
                 onClick={() => trackAffiliateClick(retailer.name, carat, shape, 'logo')}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center bg-gray-800 text-white px-4 py-2.5 md:px-4 md:py-3 rounded-lg hover:bg-gray-700 transition-colors"
+                className={`inline-flex items-center bg-gray-800 text-white px-4 py-2.5 md:px-4 md:py-3 rounded-lg hover:bg-gray-700 transition-colors border-2 ${borderColor}`}
               >
                 <img
                   src={retailer.logo}

@@ -12,6 +12,8 @@ const config: Config = {
         'header-black': '#000000',
         'main-gray': '#252525',
         'shopping-gray': '#F5F5F5',
+        'cyan': '#07F4FF',
+        'magenta': '#FA06FF',
       },
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
