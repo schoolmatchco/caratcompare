@@ -259,9 +259,7 @@ def generate_comparison_video(carat1, shape1, carat2, shape2, output_path):
             fps=FPS,
             codec='libx264',
             audio=False,
-            preset='medium',
-            verbose=False,
-            logger=None
+            preset='medium'
         )
 
         print(f"✓ Saved: {output_path}")
